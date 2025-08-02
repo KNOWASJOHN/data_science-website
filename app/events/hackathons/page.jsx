@@ -12,30 +12,64 @@ import { database } from "@/app/database/firebaseConfig";
 import { ref, onValue } from "firebase/database";
 
 export default function HackathonsPage() {
-  const [hackathons, setHackathons] = useState([]);
+  const [ongoingHackathons, setOngoingHackathons] = useState([]);
+  const [upcomingHackathons, setUpcomingHackathons] = useState([]);
+  const [pastHackathons, setPastHackathons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     console.log("Starting Firebase connection...");
     try {
-      const hackathonsRef = ref(database, "hackathons");
-      
-      onValue(hackathonsRef, (snapshot) => {
-        console.log("Firebase snapshot received:", snapshot.val());
+      // Reference to each category in the database
+      const ongoingRef = ref(database, "hackathons/ongoing");
+      const upcomingRef = ref(database, "hackathons/upcoming");
+      const pastRef = ref(database, "hackathons/past");
+
+      // Fetch ongoing hackathons
+      onValue(ongoingRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {
           const hackathonsArray = Object.keys(data).map((key) => ({
             id: key,
             ...data[key],
+            status: "ongoing"
           }));
-          console.log("Processed hackathons:", hackathonsArray);
-          setHackathons(hackathonsArray);
+          setOngoingHackathons(hackathonsArray);
         } else {
-          console.log("No data in Firebase");
-          setHackathons([]);
+          setOngoingHackathons([]);
         }
-        setLoading(false);
+      });
+
+      // Fetch upcoming hackathons
+      onValue(upcomingRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const hackathonsArray = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+            status: "upcoming"
+          }));
+          setUpcomingHackathons(hackathonsArray);
+        } else {
+          setUpcomingHackathons([]);
+        }
+      });
+
+      // Fetch past hackathons
+      onValue(pastRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const hackathonsArray = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+            status: "completed"
+          }));
+          setPastHackathons(hackathonsArray);
+        } else {
+          setPastHackathons([]);
+        }
+        setLoading(false); // Set loading to false after all data is fetched
       }, (error) => {
         console.error("Firebase error:", error);
         setError(error.message);
@@ -60,39 +94,30 @@ export default function HackathonsPage() {
     });
   };
 
-  // Process hackathon data to ensure all required fields exist
+  // Process hackathon data to ensure all required fields exist and match database structure
   const processHackathon = (hackathon) => {
     return {
       ...hackathon,
-      images: hackathon.images || ["/placeholder.svg"],
-      themes: hackathon.themes || [],
-      startDate: hackathon.startDate || hackathon.date || "",
-      endDate: hackathon.endDate || hackathon.date || "",
-      date: formatDate(hackathon.startDate || hackathon.date),
+      title: hackathon.title || "Untitled Hackathon",
+      description: hackathon.description || "",
+      startDate: hackathon.startDate || "",
+      endDate: hackathon.endDate || "",
+      date: formatDate(hackathon.startDate),
+      location: hackathon.location || "TBA",
       participants: hackathon.participants || 0,
       prizes: hackathon.prizes || "TBA",
-      featured: !!hackathon.featured,
+      featured: hackathon.featured || false,
+      themes: Array.isArray(hackathon.themes) ? hackathon.themes : [],
+      images: Array.isArray(hackathon.images) ? hackathon.images : ["/placeholder.svg"],
+      time: hackathon.time || "9:00 AM - 6:00 PM",
+      sponsors: Array.isArray(hackathon.sponsors) ? hackathon.sponsors : [],
     };
   };
 
-  const processedHackathons = hackathons.map(processHackathon);
-
-  const sortHackathons = (hackathon) => {
-    const startDate = new Date(hackathon.startDate);
-    const endDate = new Date(hackathon.endDate);
-
-    if (currentDate < startDate) {
-      return "upcoming";
-    } else if (currentDate > endDate) {
-      return "completed";
-    } else {
-      return "ongoing";
-    }
-  };
-
-  const upcomingHackathons = processedHackathons.filter(h => sortHackathons(h) === "upcoming");
-  const ongoingHackathons = processedHackathons.filter(h => sortHackathons(h) === "ongoing");
-  const completedHackathons = processedHackathons.filter(h => sortHackathons(h) === "completed");
+  // Process hackathons from each category
+  const processedOngoingHackathons = ongoingHackathons.map(processHackathon);
+  const processedUpcomingHackathons = upcomingHackathons.map(processHackathon);
+  const processedPastHackathons = pastHackathons.map(processHackathon);
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -136,7 +161,7 @@ export default function HackathonsPage() {
     );
   }
 
-  if (!loading && hackathons.length === 0) {
+  if (!loading && ongoingHackathons.length === 0 && upcomingHackathons.length === 0 && pastHackathons.length === 0) {
     return (
       <div className="min-h-screen bg-white">
         <Header />
@@ -196,7 +221,7 @@ export default function HackathonsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {ongoingHackathons.map((hackathon, index) => (
+            {processedOngoingHackathons.map((hackathon, index) => (
               <Card
                 key={hackathon.id}
                 className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up"
@@ -224,7 +249,11 @@ export default function HackathonsPage() {
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">Ends on {formatDate(hackathon.endDate)}</span>
+                      <span className="text-sm">Start: {formatDate(hackathon.startDate)}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">End: {formatDate(hackathon.endDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Clock className="h-4 w-4 mr-2 text-cyan-600" />
@@ -245,6 +274,24 @@ export default function HackathonsPage() {
                   </div>
 
                   <p className="text-slate-600 text-sm mb-4 line-clamp-3">{hackathon.description}</p>
+
+                  {hackathon.sponsors && hackathon.sponsors.length > 0 && (
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {sponsor}
+                          </Badge>
+                        ))}
+                        {hackathon.sponsors.length > 3 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{hackathon.sponsors.length - 3} more
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white">
                     View Live Updates
@@ -272,7 +319,7 @@ export default function HackathonsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingHackathons.map((hackathon, index) => (
+            {processedUpcomingHackathons.map((hackathon, index) => (
               <Card
                 key={hackathon.id}
                 className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up"
@@ -300,7 +347,11 @@ export default function HackathonsPage() {
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.date}</span>
+                      <span className="text-sm">Start: {formatDate(hackathon.startDate)}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">End: {formatDate(hackathon.endDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Clock className="h-4 w-4 mr-2 text-cyan-600" />
@@ -321,6 +372,24 @@ export default function HackathonsPage() {
                   </div>
 
                   <p className="text-slate-600 text-sm mb-4 line-clamp-3">{hackathon.description}</p>
+
+                  {hackathon.sponsors && hackathon.sponsors.length > 0 && (
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {sponsor}
+                          </Badge>
+                        ))}
+                        {hackathon.sponsors.length > 3 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{hackathon.sponsors.length - 3} more
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold text-slate-700 mb-2">Themes:</h4>
@@ -359,7 +428,7 @@ export default function HackathonsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {completedHackathons.map((hackathon, index) => (
+            {processedPastHackathons.map((hackathon, index) => (
               <Card
                 key={hackathon.id}
                 className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up"
@@ -385,7 +454,11 @@ export default function HackathonsPage() {
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.date}</span>
+                      <span className="text-sm">Start: {formatDate(hackathon.startDate)}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">End: {formatDate(hackathon.endDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Users className="h-4 w-4 mr-2 text-cyan-600" />
@@ -398,6 +471,24 @@ export default function HackathonsPage() {
                   </div>
 
                   <p className="text-slate-600 text-sm mb-4 line-clamp-3">{hackathon.description}</p>
+
+                  {hackathon.sponsors && hackathon.sponsors.length > 0 && (
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {sponsor}
+                          </Badge>
+                        ))}
+                        {hackathon.sponsors.length > 3 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{hackathon.sponsors.length - 3} more
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   {hackathon.winner && (
                     <div className="mb-4 p-3 bg-amber-50 rounded-lg border border-amber-200">
