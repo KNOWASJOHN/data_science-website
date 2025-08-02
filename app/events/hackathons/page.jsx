@@ -1,138 +1,153 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ImageCarousel } from "@/components/image-carousel"
-import { Calendar, Clock, MapPin, Users, Trophy, Code, Zap, ArrowRight } from "lucide-react"
+"use client";
+
+import { useEffect, useState } from "react";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ImageCarousel } from "@/components/image-carousel";
+import { Calendar, Clock, MapPin, Users, Trophy, Code, Zap, ArrowRight } from "lucide-react";
+import { database } from "@/app/database/firebaseConfig";
+import { ref, onValue } from "firebase/database";
 
 export default function HackathonsPage() {
-  const hackathons = [
-    {
-      id: 1,
-      title: "DataHack 2024: AI for Social Good",
-      date: "August 15-17, 2024",
-      time: "48 Hours",
-      location: "Innovation Hub, CCE",
-      description:
-        "A 48-hour hackathon focused on developing AI-powered solutions for social challenges. Participants will work on real-world problems in healthcare, education, and environmental sustainability.",
-      images: [
-        "/placeholder.svg?height=300&width=600",
-        "/placeholder.svg?height=300&width=600&text=Team+Formation",
-        "/placeholder.svg?height=300&width=600&text=Coding+Marathon",
-        "/placeholder.svg?height=300&width=600&text=Final+Pitches",
-        "/placeholder.svg?height=300&width=600&text=Award+Ceremony",
-      ],
-      status: "upcoming",
-      participants: 150,
-      teams: 30,
-      prizes: "₹2,00,000",
-      themes: ["Healthcare AI", "EdTech Solutions", "Environmental Monitoring", "Smart Cities"],
-      sponsors: ["Google", "Microsoft", "AWS", "NVIDIA"],
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "FinTech Innovation Challenge",
-      date: "September 20-22, 2024",
-      time: "36 Hours",
-      location: "Main Auditorium & Labs",
-      description:
-        "Develop innovative financial technology solutions using blockchain, AI, and data analytics. Focus on digital payments, fraud detection, and financial inclusion.",
-      images: [
-        "/placeholder.svg?height=300&width=600",
-        "/placeholder.svg?height=300&width=600&text=Blockchain+Workshop",
-        "/placeholder.svg?height=300&width=600&text=Mentor+Sessions",
-        "/placeholder.svg?height=300&width=600&text=Demo+Day",
-      ],
-      status: "upcoming",
-      participants: 120,
-      teams: 25,
-      prizes: "₹1,50,000",
-      themes: ["Digital Payments", "Fraud Detection", "Robo-Advisory", "Cryptocurrency"],
-      sponsors: ["Razorpay", "Paytm", "HDFC Bank", "Coinbase"],
-    },
-    {
-      id: 3,
-      title: "Smart Campus Hackathon",
-      date: "October 10-12, 2024",
-      time: "48 Hours",
-      location: "Computer Science Block",
-      description:
-        "Create IoT and data-driven solutions to make our campus smarter and more sustainable. Focus on energy management, security, and student services.",
-      images: [
-        "/placeholder.svg?height=300&width=600",
-        "/placeholder.svg?height=300&width=600&text=IoT+Sensors",
-        "/placeholder.svg?height=300&width=600&text=Data+Dashboard",
-        "/placeholder.svg?height=300&width=600&text=Campus+Tour",
-      ],
-      status: "upcoming",
-      participants: 100,
-      teams: 20,
-      prizes: "₹1,00,000",
-      themes: ["Energy Management", "Campus Security", "Student Services", "Waste Management"],
-      sponsors: ["Intel", "Cisco", "IBM", "Siemens"],
-    },
-    {
-      id: 4,
-      title: "Data Science Challenge 2024",
-      date: "June 5-7, 2024",
-      time: "48 Hours",
-      location: "Data Science Lab",
-      description:
-        "Our flagship hackathon where teams competed to solve complex data science problems using machine learning and analytics. Winners developed a predictive model for crop yield optimization.",
-      images: [
-        "/placeholder.svg?height=300&width=600",
-        "/placeholder.svg?height=300&width=600&text=Data+Analysis",
-        "/placeholder.svg?height=300&width=600&text=ML+Models",
-        "/placeholder.svg?height=300&width=600&text=Winning+Team",
-        "/placeholder.svg?height=300&width=600&text=Prize+Distribution",
-      ],
-      status: "completed",
-      participants: 180,
-      teams: 35,
-      prizes: "₹2,50,000",
-      themes: ["Predictive Analytics", "Computer Vision", "NLP", "Time Series Analysis"],
-      sponsors: ["TCS", "Infosys", "Wipro", "Accenture"],
-      winner: "Team DataMinds - Crop Yield Prediction System",
-      featured: true,
-    },
-    {
-      id: 5,
-      title: "Healthcare Innovation Hack",
-      date: "April 12-14, 2024",
-      time: "48 Hours",
-      location: "Medical Informatics Lab",
-      description:
-        "Focused on developing technology solutions for healthcare challenges. Teams worked on telemedicine, health monitoring, and medical data analysis projects.",
-      images: [
-        "/placeholder.svg?height=300&width=600",
-        "/placeholder.svg?height=300&width=600&text=Health+Tech",
-        "/placeholder.svg?height=300&width=600&text=Medical+Data",
-        "/placeholder.svg?height=300&width=600&text=Prototype+Demo",
-      ],
-      status: "completed",
-      participants: 90,
-      teams: 18,
-      prizes: "₹1,25,000",
-      themes: ["Telemedicine", "Health Monitoring", "Medical Imaging", "Drug Discovery"],
-      sponsors: ["Philips Healthcare", "GE Healthcare", "Siemens Healthineers"],
-      winner: "Team MedTech - AI-Powered Diagnostic Assistant",
-    },
-  ]
+  const [hackathons, setHackathons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    console.log("Starting Firebase connection...");
+    try {
+      const hackathonsRef = ref(database, "hackathons");
+      
+      onValue(hackathonsRef, (snapshot) => {
+        console.log("Firebase snapshot received:", snapshot.val());
+        const data = snapshot.val();
+        if (data) {
+          const hackathonsArray = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+          console.log("Processed hackathons:", hackathonsArray);
+          setHackathons(hackathonsArray);
+        } else {
+          console.log("No data in Firebase");
+          setHackathons([]);
+        }
+        setLoading(false);
+      }, (error) => {
+        console.error("Firebase error:", error);
+        setError(error.message);
+        setLoading(false);
+      });
+    } catch (err) {
+      console.error("Error setting up Firebase:", err);
+      setError(err.message);
+      setLoading(false);
+    }
+  }, []);
 
-  const upcomingHackathons = hackathons.filter((h) => h.status === "upcoming")
-  const completedHackathons = hackathons.filter((h) => h.status === "completed")
+  const currentDate = new Date();
+
+  // Format date helper function
+  const formatDate = (date) => {
+    if (!date) return "";
+    return new Date(date).toLocaleDateString('en-IN', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  // Process hackathon data to ensure all required fields exist
+  const processHackathon = (hackathon) => {
+    return {
+      ...hackathon,
+      images: hackathon.images || ["/placeholder.svg"],
+      themes: hackathon.themes || [],
+      startDate: hackathon.startDate || hackathon.date || "",
+      endDate: hackathon.endDate || hackathon.date || "",
+      date: formatDate(hackathon.startDate || hackathon.date),
+      participants: hackathon.participants || 0,
+      prizes: hackathon.prizes || "TBA",
+      featured: !!hackathon.featured,
+    };
+  };
+
+  const processedHackathons = hackathons.map(processHackathon);
+
+  const sortHackathons = (hackathon) => {
+    const startDate = new Date(hackathon.startDate);
+    const endDate = new Date(hackathon.endDate);
+
+    if (currentDate < startDate) {
+      return "upcoming";
+    } else if (currentDate > endDate) {
+      return "completed";
+    } else {
+      return "ongoing";
+    }
+  };
+
+  const upcomingHackathons = processedHackathons.filter(h => sortHackathons(h) === "upcoming");
+  const ongoingHackathons = processedHackathons.filter(h => sortHackathons(h) === "ongoing");
+  const completedHackathons = processedHackathons.filter(h => sortHackathons(h) === "completed");
 
   const getStatusColor = (status) => {
     switch (status) {
       case "upcoming":
         return "bg-green-100 text-green-800"
+      case "ongoing":
+        return "bg-yellow-100 text-yellow-800"
       case "completed":
         return "bg-blue-100 text-blue-800"
       default:
         return "bg-gray-100 text-gray-800"
     }
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <div className="container mx-auto px-4 py-16">
+          <div className="text-center">
+            <p className="text-xl text-slate-600">Loading hackathons...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <div className="container mx-auto px-4 py-16">
+          <div className="text-center">
+            <p className="text-xl text-red-600 mb-2">Error loading hackathons</p>
+            <p className="text-slate-600">{error}</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!loading && hackathons.length === 0) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <div className="container mx-auto px-4 py-16">
+          <div className="text-center">
+            <p className="text-xl text-slate-600">No hackathons found. Check back later!</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
   }
 
   return (
@@ -153,28 +168,99 @@ export default function HackathonsPage() {
       <div className="bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 mb-2">8+</div>
-              <div className="text-slate-600">Hackathons Organized</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 mb-2">500+</div>
-              <div className="text-slate-600">Total Participants</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 mb-2">₹10L+</div>
-              <div className="text-slate-600">Prize Money Distributed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 mb-2">50+</div>
-              <div className="text-slate-600">Industry Partners</div>
-            </div>
+            {[
+              { value: "8+", label: "Hackathons Organized" },
+              { value: "500+", label: "Total Participants" },
+              { value: "₹10L+", label: "Prize Money Distributed" },
+              { value: "50+", label: "Industry Partners" }
+            ].map((stat, index) => (
+              <div key={`stat-${index}`} className="text-center">
+                <div className="text-3xl font-bold text-cyan-600 mb-2">{stat.value}</div>
+                <div className="text-slate-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
+        {/* Ongoing Hackathons */}
+        <section className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold text-slate-800">Ongoing Hackathons</h2>
+            <Badge className="bg-yellow-100 text-yellow-800 px-3 py-1">
+              <Zap className="h-4 w-4 mr-1" />
+              In Progress
+            </Badge>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {ongoingHackathons.map((hackathon, index) => (
+              <Card
+                key={hackathon.id}
+                className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative h-48">
+                  <ImageCarousel images={hackathon.images} alt={hackathon.title} className="h-full" />
+                  <div className="absolute top-3 right-3">
+                    <Badge className="bg-yellow-100 text-yellow-800">
+                      Ongoing
+                    </Badge>
+                  </div>
+                  {hackathon.featured && (
+                    <div className="absolute top-3 left-3">
+                      <Badge className="bg-cyan-600 hover:bg-cyan-700">Featured</Badge>
+                    </div>
+                  )}
+                </div>
+
+                <CardHeader>
+                  <CardTitle className="text-xl text-slate-800 line-clamp-2">{hackathon.title}</CardTitle>
+                </CardHeader>
+
+                <CardContent>
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-center text-slate-600">
+                      <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">Ends on {formatDate(hackathon.endDate)}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Clock className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">{hackathon.time}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <MapPin className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">{hackathon.location}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Users className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">{hackathon.participants} participants</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Trophy className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">Prize Pool: {hackathon.prizes}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-slate-600 text-sm mb-4 line-clamp-3">{hackathon.description}</p>
+
+                  <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white">
+                    View Live Updates
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          {ongoingHackathons.length === 0 && (
+            <div className="text-center text-slate-600 py-8">
+              No hackathons are currently in progress.
+            </div>
+          )}
+        </section>
+
         {/* Upcoming Hackathons */}
         <section className="mb-16">
           <div className="flex items-center justify-between mb-8">
