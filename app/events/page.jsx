@@ -111,34 +111,38 @@ export default function EventsHomePage() {
                 )}
               </div>
 
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-slate-800 mb-3 line-clamp-2">{evt.title}</h3>
+              <CardContent className="p-6 min-h-[24rem] flex flex-col">
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3 line-clamp-2">{evt.title}</h3>
 
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center text-slate-600">
-                    <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                    <span className="text-sm">{evt.date}</span>
+                  <div className="space-y-2 mb-4">
+                    <div className="flex items-center text-slate-600">
+                      <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">{evt.date}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Clock className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">{evt.time}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <MapPin className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">{evt.location}</span>
+                    </div>
+                    <div className="flex items-center text-slate-600">
+                      <Users className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-sm">{evt.organizer}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center text-slate-600">
-                    <Clock className="h-4 w-4 mr-2 text-cyan-600" />
-                    <span className="text-sm">{evt.time}</span>
-                  </div>
-                  <div className="flex items-center text-slate-600">
-                    <MapPin className="h-4 w-4 mr-2 text-cyan-600" />
-                    <span className="text-sm">{evt.location}</span>
-                  </div>
-                  <div className="flex items-center text-slate-600">
-                    <Users className="h-4 w-4 mr-2 text-cyan-600" />
-                    <span className="text-sm">{evt.organizer}</span>
-                  </div>
+
+                  <p className="text-slate-600 text-sm line-clamp-3">{evt.description}</p>
                 </div>
 
-                <p className="text-slate-600 text-sm mb-4 line-clamp-3">{evt.description}</p>
-
-                <Button className="w-full bg-cyan-600 hover:bg-cyan-700">
-                  View Details
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <div className="pt-4 mt-auto">
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700">
+                    View Details
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
