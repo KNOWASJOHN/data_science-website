@@ -280,8 +280,15 @@ export default function HackathonsPage() {
                       <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
                       <div className="flex flex-wrap gap-1">
                         {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {sponsor}
+                          <Badge key={idx} variant="outline" className="text-xs flex items-center">
+                            {sponsor.logo && (
+                              <img 
+                                src={sponsor.logo} 
+                                alt={`${sponsor.name} logo`} 
+                                className="w-4 h-4 mr-1"
+                              />
+                            )}
+                            {sponsor.name}
                           </Badge>
                         ))}
                         {hackathon.sponsors.length > 3 && (
@@ -378,8 +385,15 @@ export default function HackathonsPage() {
                       <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
                       <div className="flex flex-wrap gap-1">
                         {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {sponsor}
+                          <Badge key={idx} variant="outline" className="text-xs flex items-center">
+                            {sponsor.logo && (
+                              <img 
+                                src={sponsor.logo} 
+                                alt={`${sponsor.name} logo`} 
+                                className="w-4 h-4 mr-1"
+                              />
+                            )}
+                            {sponsor.name}
                           </Badge>
                         ))}
                         {hackathon.sponsors.length > 3 && (
@@ -477,8 +491,15 @@ export default function HackathonsPage() {
                       <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
                       <div className="flex flex-wrap gap-1">
                         {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {sponsor}
+                          <Badge key={idx} variant="outline" className="text-xs flex items-center">
+                            {sponsor.logo && (
+                              <img 
+                                src={sponsor.logo} 
+                                alt={`${sponsor.name} logo`} 
+                                className="w-4 h-4 mr-1"
+                              />
+                            )}
+                            {sponsor.name}
                           </Badge>
                         ))}
                         {hackathon.sponsors.length > 3 && (
