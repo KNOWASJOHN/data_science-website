@@ -155,35 +155,56 @@ export function EventCalendar({ events }) {
       days.push(
         <div
           key={`day-${day}`}
-          className={`h-24 border border-gray-200 p-1 overflow-hidden ${
-            isToday ? "bg-cyan-50 border-cyan-200" : "bg-white"
+          className={`relative h-24 border border-gray-200 overflow-hidden ${
+            isToday ? "border-cyan-200" : ""
           }`}
+          style={{
+            background: dayEvents.length > 0 && dayEvents[0].image
+              ? `linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.4)), url(${dayEvents[0].image})`
+              : isToday ? "rgb(236 254 255)" : "white",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
         >
-          <div className="flex justify-between items-start">
-            <span className={`text-sm font-medium ${isToday ? "text-cyan-700" : "text-gray-700"}`}>{day}</span>
+          <div className="flex justify-between items-start p-1">
+            <span className={`text-base font-bold ${isToday ? "text-cyan-700" : "text-black"}`}>{day}</span>
             {dayEvents.length > 0 && (
-              <Badge className="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 text-xs">{dayEvents.length}</Badge>
+              <Badge className="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 text-sm">{dayEvents.length}</Badge>
             )}
           </div>
 
-          <div className="mt-1 space-y-1">
+          <div className="mt-1 space-y-1 px-1">
             {dayEvents.map((event) => (
               <TooltipProvider key={event.id}>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div
-                      className={`text-xs truncate rounded px-1 py-0.5 cursor-pointer ${
-                        event.featured ? "bg-cyan-600 text-white" : "bg-slate-100 text-slate-800 hover:bg-slate-200"
+                      className={`relative text-sm truncate rounded cursor-pointer ${
+                        event.featured 
+                          ? "bg-cyan-600/90 text-white hover:bg-cyan-600" 
+                          : "bg-white/90 text-black hover:bg-white shadow-sm"
                       }`}
                       onClick={() => setSelectedEvent(event)}
                     >
-                      {event.title}
+                      <div className="px-1 py-0.5">
+                        {event.title}
+                      </div>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent side="right" className="max-w-xs">
                     <div>
-                      <h4 className="font-semibold">{event.title}</h4>
-                      <p className="text-xs text-gray-500">
+                      {event.image && (
+                        <div className="w-full h-24 rounded-t-md mb-2 overflow-hidden">
+                          <img 
+                            src={event.image} 
+                            alt={event.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <h4 className="font-bold">{event.title}</h4>
+                      <p className="text-xl text-gray-100">
                         {event.time} | {event.location}
                       </p>
                       <p className="text-xs mt-1">{event.description}</p>
@@ -266,19 +287,47 @@ export function EventCalendar({ events }) {
 
       {/* Selected Event Details */}
       {selectedEvent && (
-        <Card className="mt-8">
-          <CardContent className="p-6">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-2">{selectedEvent.title}</h3>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge className="bg-cyan-100 text-cyan-800">{selectedEvent.category}</Badge>
-                  {selectedEvent.featured && <Badge className="bg-amber-100 text-amber-800">Featured</Badge>}
-                </div>
-              </div>
-              <Button variant="ghost" size="sm" onClick={() => setSelectedEvent(null)}>
+        <Card className="mt-8 overflow-hidden">
+          {selectedEvent.image && (
+            <div className="relative w-full h-48 md:h-64">
+              <img
+                src={selectedEvent.image}
+                alt={selectedEvent.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setSelectedEvent(null)}
+                className="absolute top-2 right-2 text-white hover:bg-black/20"
+              >
                 ×
               </Button>
+            </div>
+          )}
+          <CardContent className={`p-6 ${selectedEvent.image ? '-mt-16 relative' : ''}`}>
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className={`text-2xl font-bold mb-2 ${selectedEvent.image ? 'text-white' : 'text-slate-800'}`}>
+                  {selectedEvent.title}
+                </h3>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <Badge className={selectedEvent.image ? 'bg-white/20 text-white' : 'bg-cyan-100 text-cyan-800'}>
+                    {selectedEvent.category}
+                  </Badge>
+                  {selectedEvent.featured && (
+                    <Badge className={selectedEvent.image ? 'bg-amber-400/20 text-amber-100' : 'bg-amber-100 text-amber-800'}>
+                      Featured
+                    </Badge>
+                  )}
+                </div>
+              </div>
+              {!selectedEvent.image && (
+                <Button variant="ghost" size="sm" onClick={() => setSelectedEvent(null)}>
+                  ×
+                </Button>
+              )}
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
