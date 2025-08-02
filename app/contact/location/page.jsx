@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Navigation, Phone, Mail, Clock } from "lucide-react"
 
 export default function LocationPage() {
-  const mapUrl = "https://maps.app.goo.gl/nUP3k1UuZdiYG3ko7"
+  const mapUrl = "https://maps.app.goo.gl/dSiu1qLyaJv46jUE8"
 
   return (
     <div className="min-h-screen bg-white">
@@ -94,7 +94,7 @@ export default function LocationPage() {
               <CardContent className="p-0 h-full">
                 <div className="h-full min-h-[500px] rounded-lg overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.8234567890123!2d76.2123456789!3d10.5123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sChrist%20College%20of%20Engineering%20Irinjalakuda!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2682.3930920511957!2d76.2127088!3d10.357801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7f65a7d7bc725%3A0x22dc855ba6cace68!2sChrist%20College%20of%20Engineering!5e1!3m2!1sen!2sin!4v1754094615829!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0, minHeight: "500px" }}
