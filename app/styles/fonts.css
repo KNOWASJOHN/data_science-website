@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'DotMatrix';
+  src: url('/fonts/DOTMATRI.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rotifera';
+  src: url('/fonts/RotiferaDEMO-BlackItalic-BF67eb4c233bf52.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Semika';
+  src: url('/fonts/Semika.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EloquiaDisplay';
+  src: url('/fonts/Typekiln - EloquiaDisplay-ExtraBold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EloquiaText';
+  src: url('/fonts/Typekiln - EloquiaText-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}

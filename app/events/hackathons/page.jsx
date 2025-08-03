@@ -347,7 +347,7 @@ export default function HackathonsPage() {
                 </div>
 
                 <CardHeader>
-                  <CardTitle className="text-xl text-slate-800 line-clamp-2">{hackathon.title}</CardTitle>
+                  <CardTitle className="text-xl text-slate-800 line-clamp-2 ">{hackathon.title}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
@@ -461,7 +461,7 @@ export default function HackathonsPage() {
                 </div>
 
                 <CardHeader>
-                  <CardTitle className="text-xl text-slate-800 line-clamp-2">{hackathon.title}</CardTitle>
+                  <CardTitle className="text-xl text-slate-800 line-clamp-2 ">{hackathon.title}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
@@ -514,7 +514,7 @@ export default function HackathonsPage() {
                   {hackathon.winner && (
                     <div className="mb-4 p-3 bg-amber-50 rounded-lg border border-amber-200">
                       <h4 className="text-sm font-semibold text-amber-800 mb-1">🏆 Winner:</h4>
-                      <p className="text-sm text-amber-700">{hackathon.winner}</p>
+                      <p className="text-sm text-amber-700 " >{hackathon.winner}</p>
                     </div>
                   )}
 

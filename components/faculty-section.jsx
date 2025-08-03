@@ -97,7 +97,7 @@ export function FacultySection() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {members.map((member, index) => (
-              <Card key={member.id} className="hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <Card key={member.id} className="hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
                 <div className="aspect-square bg-gray-200 relative overflow-hidden">
                   <img
                     src={member.image || "/placeholder.svg"}
@@ -105,25 +105,29 @@ export function FacultySection() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">{member.name}</h3>
-                  <p className="text-cyan-600 font-medium mb-4">{member.position}</p>
-                  
-                  {member.specialization && (
-                    <p className="text-sm text-slate-600 mb-4">
-                      {member.specialization}
-                    </p>
-                  )}
+                <CardContent className="p-6 flex flex-col flex-1">
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-slate-800 font-rotifera font-normal">{member.name}</h3>
+                    <p className="text-cyan-600 text-md font-eloquia-text ">{member.position}</p>
+                    
+                    {member.specialization && (
+                      <p className="text-sm text-slate-600 font-eloquia-text">
+                        {member.specialization}
+                      </p>
+                    )}
 
-                  <div className="flex items-center justify-center mb-4">
-                    <Mail className="h-4 w-4 mr-2 text-cyan-600" />
-                    <span className="text-slate-600 text-sm">{member.email}</span>
+                    <div className="flex items-center justify-center">
+                      <Mail className="h-4 w-4 mr-2 text-cyan-600" />
+                      <span className="text-slate-600 text-sm font-dot-matrix">{member.email}</span>
+                    </div>
                   </div>
 
-                  <Button size="sm" variant="outline" className="w-full bg-transparent">
-                    <Mail className="h-4 w-4 mr-1" />
-                    Contact
-                  </Button>
+                  <div className="mt-6">
+                    <Button size="sm" variant="outline" className="w-full bg-transparent hover:bg-cyan-50 border-cyan-600 text-cyan-600 font-eloquia-text">
+                      <Mail className="h-4 w-4 mr-1" />
+                      Contact
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}

@@ -99,7 +99,7 @@ export default function FacultyStaffPage() {
                   </div>
                   <CardContent className="p-6">
                     <div className="text-center mb-4">
-                      <h3 className="text-xl font-bold text-slate-800 mb-2">{member.name}</h3>
+                      <h3 className="text-md font-bold text-slate-800 mb-2 font-rotifera">{member.name}</h3>
                       <p className="text-cyan-600 font-medium">{member.position}</p>
                     </div>
 
@@ -145,11 +145,11 @@ export default function FacultyStaffPage() {
                       <div className="pt-4 border-t border-gray-200 space-y-2">
                         <div className="flex items-center">
                           <Mail className="h-4 w-4 mr-2 text-slate-600" />
-                          <span className="text-gray-700 text-sm">{member.email}</span>
+                          <span className="text-gray-700 text-md font-dot-matrix">{member.email}</span>
                         </div>
                         <div className="flex items-center">
                           <Phone className="h-4 w-4 mr-2 text-slate-600" />
-                          <span className="text-gray-700 text-sm">{member.phone}</span>
+                          <span className="text-gray-700 text-md font-dot-matrix">{member.phone}</span>
                         </div>
                       </div>
                     </div>

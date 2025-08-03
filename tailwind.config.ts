@@ -12,6 +12,13 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		      fontFamily: {
+        'dot-matrix': ['DotMatrix', 'monospace'],
+        'rotifera': ['Rotifera', 'sans-serif'],
+        'semika': ['Semika', 'sans-serif'],
+        'eloquia-display': ['EloquiaDisplay', 'serif'],
+        'eloquia-text': ['EloquiaText', 'serif'],
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
