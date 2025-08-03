@@ -14,36 +14,36 @@ export function Header() {
   }
 
   return (
-    <header className="bg-slate-800 text-white">
+    <header className="bg-slate-800 text-white font-dot-matrix text-xl">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">DS</span>
+              <span className="text-white font-bold text-xl font-coolvetica-lt">DS</span>
             </div>
-            <span className="text-xl font-bold">DS-CCE</span>
+            <span className="text-md font-bold font-stretch">DS-CCE</span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-cyan-300 transition-colors font-medium text-sm">
+            <Link href="/" className="text-white hover:text-cyan-300 transition-colors font-medium text-sm font-dot-matrix">
               HOME
             </Link>
 
             {/* About Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm">
+            <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm font-dot-matrix">
                 ABOUT <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-slate-800 border-slate-700 text-white">
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/about/faculty-staff" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/about/faculty-staff" className="w-full font-dot-matrix">
                     Faculty & Staff
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/about/vision-mission" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/about/vision-mission" className="w-full font-dot-matrix">
                     Vision & Mission
                   </Link>
                 </DropdownMenuItem>
@@ -52,22 +52,22 @@ export function Header() {
 
             {/* Academics Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm">
+            <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm font-dot-matrix">
                 ACADEMICS <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-slate-800 border-slate-700 text-white">
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/academics/curriculum" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/academics/curriculum" className="w-full font-dot-matrix">
                     Curriculum
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/academics/calendar" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/academics/calendar" className="w-full font-dot-matrix">
                     Academic Calendar
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/academics/timetable" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/academics/timetable" className="w-full font-dot-matrix">
                     Timetable
                   </Link>
                 </DropdownMenuItem>
@@ -76,22 +76,22 @@ export function Header() {
 
             {/* Achievements Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm">
+            <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm font-dot-matrix">
                 ACHIEVEMENTS <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-slate-800 border-slate-700 text-white">
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/achievements/faculty" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/achievements/faculty" className="w-full font-dot-matrix">
                     Faculty Achievements
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/achievements/students" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/achievements/students" className="w-full font-dot-matrix">
                     Student Achievements
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/achievements/awards" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/achievements/awards" className="w-full font-dot-matrix">
                     Department Awards
                   </Link>
                 </DropdownMenuItem>
@@ -100,22 +100,22 @@ export function Header() {
 
             {/* Events Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm">
+            <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm font-dot-matrix">
                 EVENTS <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-slate-800 border-slate-700 text-white">
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/events" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/events" className="w-full font-dot-matrix">
                     Events Home
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/events/timeline" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/events/timeline" className="w-full font-dot-matrix">
                     Timeline
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/events/hackathons" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/events/hackathons" className="w-full font-dot-matrix">
                     Hackathons
                   </Link>
                 </DropdownMenuItem>
@@ -124,17 +124,17 @@ export function Header() {
 
             {/* Contact Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm">
+            <DropdownMenuTrigger className="flex items-center text-white hover:text-cyan-300 transition-colors font-medium focus:outline-none text-sm font-dot-matrix">
                 CONTACT <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-slate-800 border-slate-700 text-white">
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/contact/location" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/contact/location" className="w-full font-dot-matrix">
                     Location
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer">
-                  <Link href="/contact/office-hours" className="w-full">
+                <DropdownMenuItem className="hover:bg-slate-700 focus:bg-slate-700 cursor-pointer font-dot-matrix">
+                  <Link href="/contact/office-hours" className="w-full font-dot-matrix">
                     Office Hours
                   </Link>
                 </DropdownMenuItem>
@@ -153,7 +153,7 @@ export function Header() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={toggleMobileMenu}>
+        <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50 " onClick={toggleMobileMenu}>
           <div
             className="fixed inset-y-0 right-0 w-[280px] bg-slate-800 shadow-lg p-5 overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
@@ -174,7 +174,7 @@ export function Header() {
               <div>
                 <Link
                   href="/"
-                  className="block text-white hover:text-cyan-300 transition-colors font-medium py-2"
+                  className="block  text-white hover:text-cyan-300 transition-colors font-medium py-2"
                   onClick={toggleMobileMenu}
                 >
                   HOME
@@ -184,21 +184,21 @@ export function Header() {
               <MobileNavSection title="ABOUT">
                 <Link
                   href="/about"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className=" block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   About Department
                 </Link>
                 <Link
                   href="/about/faculty-staff"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Faculty & Staff
                 </Link>
                 <Link
                   href="/about/vision-mission"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Vision & Mission
@@ -208,45 +208,45 @@ export function Header() {
               <MobileNavSection title="ACADEMICS">
                 <Link
                   href="/academics/curriculum"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Curriculum
                 </Link>
                 <Link
                   href="/academics/calendar"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Academic Calendar
                 </Link>
                 <Link
                   href="/academics/timetable"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Timetable
                 </Link>
               </MobileNavSection>
 
-              <MobileNavSection title="ACHIEVEMENTS">
+              <MobileNavSection className="font-dot-matrix" title="ACHIEVEMENTS">
                 <Link
                   href="/achievements/faculty"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Faculty Achievements
                 </Link>
                 <Link
                   href="/achievements/students"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Student Achievements
                 </Link>
                 <Link
                   href="/achievements/awards"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Department Awards
@@ -256,21 +256,21 @@ export function Header() {
               <MobileNavSection title="EVENTS">
                 <Link
                   href="/events"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Events Home
                 </Link>
                 <Link
                   href="/events/timeline"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Timeline
                 </Link>
                 <Link
                   href="/events/hackathons"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Hackathons
@@ -280,14 +280,14 @@ export function Header() {
               <MobileNavSection title="CONTACT">
                 <Link
                   href="/contact/location"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Location
                 </Link>
                 <Link
                   href="/contact/office-hours"
-                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4"
+                  className="block text-gray-300 hover:text-cyan-300 transition-colors py-2 pl-4 font-dot-matrix"
                   onClick={toggleMobileMenu}
                 >
                   Office Hours
@@ -308,7 +308,7 @@ function MobileNavSection({ title, children }) {
   return (
     <div className="border-b border-slate-700 pb-2">
       <button
-        className="flex items-center justify-between w-full text-white hover:text-cyan-300 transition-colors font-medium py-2"
+        className="flex items-center justify-between w-full text-white hover:text-cyan-300 transition-colors font-medium py-2 "
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}

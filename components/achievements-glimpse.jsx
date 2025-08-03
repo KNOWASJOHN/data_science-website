@@ -71,10 +71,10 @@ export function AchievementsGlimpse() {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-10">
-          <h2 className="text-3xl font-bold text-slate-800">Recent Achievements</h2>
+          <h2 className="text-3xl font-bold text-slate-800 font-mirage">Recent Achievements</h2>
           <Button
             variant="outline"
-            className="border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white bg-transparent"
+            className="border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white bg-transparent font-eloquia-text "
           >
             View All Achievements
           </Button>
@@ -115,11 +115,11 @@ export function AchievementsGlimpse() {
           <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
             <CardContent className="p-6 text-center">
               <Trophy className="h-12 w-12 text-green-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-slate-800 mb-2">Student Achievements</h3>
-              <p className="text-slate-600 text-sm mb-4">
+              <h3 className="text-xl font-semibold text-slate-800 mb-2 font-mirage">Student Achievements</h3>
+              <p className="text-slate-600 text-sm mb-4 font-eloquia-text">
                 Celebrating our students' success in competitions, research, and placements
               </p>
-              <Button variant="outline" className="w-full bg-transparent">
+              <Button variant="outline" className="w-full bg-transparent font-creato-thin tracking-wide">
                 View Student Achievements
               </Button>
             </CardContent>
@@ -128,11 +128,11 @@ export function AchievementsGlimpse() {
           <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
             <CardContent className="p-6 text-center">
               <Award className="h-12 w-12 text-cyan-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-slate-800 mb-2">Faculty Achievements</h3>
-              <p className="text-slate-600 text-sm mb-4">
+              <h3 className="text-xl font-semibold text-slate-800 mb-2 font-mirage">Faculty Achievements</h3>
+              <p className="text-slate-600 text-sm mb-4 font-eloquia-text">
                 Recognizing our faculty's contributions to research and academic excellence
               </p>
-              <Button variant="outline" className="w-full bg-transparent">
+              <Button variant="outline" className="w-full bg-transparent font-creato-thin tracking-wide">
                 View Faculty Achievements
               </Button>
             </CardContent>
@@ -141,11 +141,11 @@ export function AchievementsGlimpse() {
           <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
             <CardContent className="p-6 text-center">
               <Star className="h-12 w-12 text-amber-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-slate-800 mb-2">Department Awards</h3>
-              <p className="text-slate-600 text-sm mb-4">
+              <h3 className="text-xl font-semibold text-slate-800 mb-2 font-mirage">Department Awards</h3>
+              <p className="text-slate-600 text-sm mb-4 font-eloquia-text">
                 Awards and recognitions received by our department for excellence
               </p>
-              <Button variant="outline" className="w-full bg-transparent">
+              <Button variant="outline" className="w-full bg-transparent font-creato-thin tracking-wide">
                 View Department Awards
               </Button>
             </CardContent>

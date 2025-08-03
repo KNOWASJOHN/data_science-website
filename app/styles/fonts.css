@@ -37,3 +37,35 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'coolvetica-lt';
+  src: url('/fonts/Coolvetica Rg It.otf');
+}
+@font-face {
+  font-family: 'coolvetica';
+  src: url('/fonts/Coolvetica Rg.otf');
+}
+@font-face {
+  font-family: 'creato-bl';
+  src: url('/fonts/CreatoDisplay-Black.otf');
+}
+@font-face {
+  font-family: 'creato-bl-it';
+  src: url('/fonts/CreatoDisplay-BlackItalic.otf');
+}
+@font-face {
+  font-family: 'creato-thin';
+  src: url('/fonts/CreatoDisplay-Thin.otf');
+}
+@font-face {
+  font-family: 'creato-thin-it';
+  src: url('/fonts/CreatoDisplay-ThinItalic.otf');
+}
+@font-face {
+  font-family: 'mirage';
+  src: url('/fonts/Mirage Reguler.otf');
+}
+@font-face {
+  font-family: 'stretch';
+  src: url('/fonts/StretchPro.otf');
+}

@@ -18,6 +18,14 @@ const config: Config = {
         'semika': ['Semika', 'sans-serif'],
         'eloquia-display': ['EloquiaDisplay', 'serif'],
         'eloquia-text': ['EloquiaText', 'serif'],
+		'coolvetica-lt':['coolvetica-lt','serif'],
+		'coolvetica':['coolvetica','serif'],
+		'creato-bl':['creato-bl','serif'],
+		'creato-bl-it':['creato-bl-it','serif'],
+		'creato-thin':['creato-thin','serif'],
+		'creato-thin-it':['creato-thin-it','serif'],
+		'mirage':['mirage','serif'],
+		'stretch':['stretch','serif']
       },
   		colors: {
   			background: 'hsl(var(--background))',

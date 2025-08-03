@@ -75,8 +75,8 @@ export function FacultySection() {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-800 mb-6">Meet Our Team</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-slate-800 mb- font-mirage">Meet Our Team</h2>
+          <p className="text-xl text-gray-600 mt-3 max-w-3xl mx-auto font-eloquia-text italic">
             Our distinguished faculty and staff members bring years of experience and excellence to guide
             students in their data science journey.
           </p>
@@ -136,7 +136,7 @@ export function FacultySection() {
 
         <div className="text-center mt-12">
           <Link href="/about/faculty-staff">
-            <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700">
+            <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700 font-eloquia-text">
               View All Team Members
             </Button>
           </Link>
