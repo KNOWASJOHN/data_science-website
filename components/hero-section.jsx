@@ -6,13 +6,13 @@ export function HeroSection() {
   return (
     <section className="relative bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 text-white overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1200')] bg-cover bg-center opacity-10"></div>
+      <div className="absolute inset-0 bg-[url('https://seas.harvard.edu/sites/default/files/2025-06/AdobeStock_417575370_0.jpeg?height=800&width=1200')] bg-cover bg-center opacity-35"></div>
 
       <div className="relative container mx-auto px-4 py-20 lg:py-32">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6lg font-bold mb-6 font-stretch tracking-tighter italic">
+          <h1 className="text-4xl md:text-5xl lg:text-6lg font-bold mb-6 font-stretch tracking-normal italic">
             Shaping the Future of
-            <span className="text-cyan-400 mt-3 block font-stretch tracking-tighter italic">Data Science</span>
+            <span className="text-cyan-400 mt-3 block font-stretch tracking-normal italic">Data Science</span>
           </h1>
 
           <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed max-w-3xl font-creato-thin-it">
