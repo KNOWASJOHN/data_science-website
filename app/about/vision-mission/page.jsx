@@ -9,8 +9,8 @@ export default function VisionMissionPage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Vision & Mission</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Vision & Mission</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">
             Our guiding principles and aspirations for the Department of Data Science
           </p>
         </div>
@@ -39,17 +39,17 @@ export default function VisionMissionPage() {
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold text-slate-800">Our Vision</h2>
+              <h2 className="text-3xl font-bold text-slate-800 font-mirage">Our Vision</h2>
             </div>
 
             <div className="bg-gray-50 p-8 rounded-lg border-l-4 border-cyan-600 shadow-sm">
-              <p className="text-xl text-gray-700 leading-relaxed">
+              <p className="text-xl text-gray-700 leading-relaxed font-coolvetica">
                 Creating socially committed engineers with professional competency and excellence in Computer Science
                 and Engineering through quality education.
               </p>
             </div>
 
-            <div className="mt-8 space-y-6 text-gray-600">
+            <div className="mt-8 space-y-6 text-gray-600 font-eloquia-text font-bold">
               <p>
                 The Department of Data Science at Christ College of Engineering, Irinjalakuda envisions creating
                 socially committed engineers who possess professional competency and excellence in Computer Science and
@@ -96,7 +96,7 @@ export default function VisionMissionPage() {
             </div>
 
             <div className="bg-gray-50 p-8 rounded-lg border-l-4 border-cyan-600 shadow-sm">
-              <p className="text-xl text-gray-700 leading-relaxed">
+              <p className="text-xl text-gray-700 leading-relaxed font-coolvetica">
                 To achieve technical proficiency by adopting effective teaching-learning strategies which promote
                 innovation and professional expertise. To facilitate skill development of students through additional
                 training by collaborating with industry to broaden their knowledge. To promote excellence in research,
@@ -104,15 +104,15 @@ export default function VisionMissionPage() {
               </p>
             </div>
 
-            <div className="mt-8 space-y-6 text-gray-600">
-              <h3 className="text-xl font-semibold text-slate-800">Our mission encompasses three core pillars:</h3>
+            <div className="mt-8 space-y-6 text-gray-600 space-x-1">
+              <h3 className="text-xl font-semibold text-slate-800 font-eloquia-display">Our mission encompasses three core pillars:</h3>
 
               <div className="pl-6 space-y-6">
                 <div>
-                  <h4 className="font-semibold text-slate-700 mb-2">
+                  <h4 className="font-semibold text-slate-800 font-eloquia-text">
                     Technical Proficiency Through Effective Teaching-Learning
                   </h4>
-                  <p>
+                  <p className="font-coolvetica mb-4 p-2">
                     We are committed to achieving technical proficiency by adopting effective teaching-learning
                     strategies that promote innovation and professional expertise. Our faculty employs modern
                     pedagogical approaches, hands-on learning experiences, and industry-relevant curriculum to ensure
@@ -121,8 +121,8 @@ export default function VisionMissionPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-slate-700 mb-2">Industry Collaboration for Skill Development</h4>
-                  <p>
+                  <h4 className="font-semibold text-slate-700 mb-2 font-eloquia-text">Industry Collaboration for Skill Development</h4>
+                  <p className="font-coolvetica mb-4 p-2">
                     We facilitate comprehensive skill development of students through additional training programs by
                     collaborating with industry partners. These partnerships help broaden students' knowledge base,
                     provide real-world exposure, and ensure they are well-prepared for the demands of the professional
@@ -131,8 +131,8 @@ export default function VisionMissionPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-slate-700 mb-2">Excellence in Research and Ethical Practice</h4>
-                  <p>
+                  <h4 className="font-semibold text-slate-700 mb-2 font-eloquia-text">Excellence in Research and Ethical Practice</h4>
+                  <p className="font-coolvetica mb-4 p-2">
                     We promote excellence in research, development, and consultancy services rooted in ethics. Our goal
                     is to emerge as responsible engineers who contribute meaningfully to society while maintaining the
                     highest standards of professional integrity and ethical conduct in all their endeavors.
@@ -163,23 +163,23 @@ export default function VisionMissionPage() {
                   <path d="M2 12l10 5 10-5"></path>
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold text-slate-800">Program Educational Objectives (PEO)</h2>
+              <h2 className="text-3xl font-bold text-slate-800 font-mirage">Program Educational Objectives (PEO)</h2>
             </div>
 
             <div className="bg-gray-50 p-8 rounded-lg border-l-4 border-cyan-600 shadow-sm">
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              <p className="text-lg text-gray-700 leading-relaxed mb-6 font-coolvetica">
                 Our Program Educational Objectives define what our graduates are expected to achieve within a few years
                 after graduation:
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
+                  <div className="font-stretch bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
                     1
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-2">Technical Problem-Solving Expertise</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-slate-800 mb-2 font-eloquia-display">Technical Problem-Solving Expertise</h4>
+                    <p className="text-gray-700 font-eloquia-text">
                       Demonstrate their expertise in solving contemporary problems through design, analysis and
                       implementation of hardware and software systems.
                     </p>
@@ -187,24 +187,24 @@ export default function VisionMissionPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
+                  <div className=" font-stretch bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
                     2
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-2">Continuous Learning and Adaptability</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-slate-800 mb-2 font-eloquia-display">Continuous Learning and Adaptability</h4>
+                    <p className="text-gray-700 font-eloquia-text">
                       Adapt to a constantly changing world through professional development and continuous learning.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
+                  <div className=" font-stretch bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
                     3
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-2">Leadership and Entrepreneurship</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-slate-800 mb-2 font-eloquia-display">Leadership and Entrepreneurship</h4>
+                    <p className="text-gray-700 font-eloquia-text">
                       Develop teamwork, leadership and entrepreneurship skills required to function productively in
                       their profession.
                     </p>
@@ -233,23 +233,23 @@ export default function VisionMissionPage() {
                   <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold text-slate-800">Program Specific Outcomes (PSO)</h2>
+              <h2 className="text-3xl font-bold text-slate-800 font-mirage">Program Specific Outcomes (PSO)</h2>
             </div>
 
             <div className="bg-gray-50 p-8 rounded-lg border-l-4 border-cyan-600 shadow-sm">
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              <p className="text-lg text-gray-700 leading-relaxed mb-6 font-coolvetica">
                 Our Program Specific Outcomes define the specific skills and knowledge that graduates will possess upon
                 completion of the program:
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
+                  <div className="font-stretch bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
                     1
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-2">System Analysis and Design</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-slate-800 mb-2 font-eloquia-display">System Analysis and Design</h4>
+                    <p className="text-gray-700 font-eloquia-text">
                       Analyse and design computation systems by applying the attained knowledge in programming language
                       and algorithms, system software, database management, data communication, networking and allied
                       areas of Computer Science and Engineering.
@@ -258,12 +258,12 @@ export default function VisionMissionPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
+                  <div className=" font-stretch bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
                     2
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-2">Software Engineering Excellence</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-slate-800 mb-2 font-eloquia-display">Software Engineering Excellence</h4>
+                    <p className="text-gray-700 font-eloquia-text">
                       Apply software engineering principles and practices to develop efficient software solutions for
                       real world computing problems.
                     </p>
