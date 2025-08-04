@@ -10,11 +10,11 @@ export function Footer() {
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">DS</span>
+                <span className="text-white font-bold text-lg font-creato-thin">DS</span>
               </div>
-              <span className="text-xl font-bold">DS-CCE</span>
+              <span className="text-xl font-bold font-stretch">DS-CCE</span>
             </div>
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6 font-creato-thin">
               Department of Data Science, Christ College of Engineering, Irinjalakuda - Shaping the future through
               data-driven innovation.
             </p>
@@ -36,10 +36,10 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-semibold mb-6 font-creato-thin">Quick Links</h3>
+            <ul className="space-y-3 font-dot-matrix">
               <li>
-                <Link href="/about" className="text-gray-300 hover:text-cyan-400 transition-colors">
+                <Link href="/about" className="text-gray-300 hover:text-cyan-400 transition-colors ">
                   About Department
                 </Link>
               </li>
@@ -68,8 +68,8 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Resources</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-semibold mb-6 font-creato-thin">Resources</h3>
+            <ul className="space-y-3 font-dot-matrix">
               <li>
                 <Link href="/library" className="text-gray-300 hover:text-cyan-400 transition-colors">
                   Digital Library
@@ -100,11 +100,11 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
+            <h3 className="text-lg font-semibold mb-6 font-creato-thin">Contact Us</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-cyan-400 mt-1 flex-shrink-0" />
-                <div className="text-gray-300">
+                <div className="text-gray-300 font-eloquia-text">
                   <p>Department of Data Science</p>
                   <p>Christ College of Engineering</p>
                   <p>Irinjalakuda, Kerala, India</p>
@@ -112,18 +112,18 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-cyan-400" />
-                <span className="text-gray-300">+91 480 282 2259</span>
+                <span className="text-gray-300 font-eloquia-text">+91 480 282 2259</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-cyan-400" />
-                <span className="text-gray-300">ds@cce.edu.in</span>
+                <span className="text-gray-300 font-eloquia-text">ds@cce.edu.in</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center">
-          <p className="text-gray-400">
+          <p className="text-gray-400 font-eloquia-text">
             © 2024 Department of Data Science, Christ College of Engineering. All rights reserved.
           </p>
         </div>
