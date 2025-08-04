@@ -16,8 +16,8 @@ export default function LocationPage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Location</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Location</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">
             Find us at Christ College of Engineering, Irinjalakuda, Kerala, India
           </p>
         </div>
@@ -30,15 +30,15 @@ export default function LocationPage() {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center text-2xl text-slate-800">
+                <CardTitle className="flex items-center text-2xl text-slate-800 font-creato-bl tracking-normal">
                   <MapPin className="h-6 w-6 mr-3 text-cyan-600" />
                   Our Location
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-800 mb-3">Address</h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <h3 className="text-lg font-medium text-slate-800 mb-3 font-creato-bl">Address</h3>
+                  <p className="text-slate-600 leading-relaxed font-coolvetica">
                     Department of Data Science
                     <br />
                     Christ College of Engineering
@@ -48,26 +48,26 @@ export default function LocationPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-800 mb-3">Contact Information</h3>
+                  <h3 className="text-lg font-medium text-slate-800 mb-3 font-creato-bl">Contact Information</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center">
+                    <div className="flex items-center font-dot-matrix">
                       <Phone className="h-5 w-5 mr-3 text-cyan-600" />
                       <span className="text-slate-600">04802825355</span>
                     </div>
-                    <div className="flex items-center">
-                      <Mail className="h-5 w-5 mr-3 text-cyan-600" />
+                    <div className="flex items-center font-dot-matrix">
+                      <Mail className="h-5 w-5 mr-3 text-cyan-600 " />
                       <span className="text-slate-600">contact@cce.edu.in</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-800 mb-3">Getting Here</h3>
-                  <p className="text-slate-600 mb-4">
+                  <h3 className="text-lg font-medium text-slate-800 mb-3 font-creato-bl">Getting Here</h3>
+                  <p className="text-slate-600 mb-4 font-coolvetica">
                     Christ College of Engineering is located in Irinjalakuda, Thrissur district, Kerala. The campus is
                     easily accessible by road and is well-connected to major cities in Kerala.
                   </p>
-                  <ul className="text-slate-600 space-y-2">
+                  <ul className="text-slate-600 space-y-2 font-dot-matrix font-normal">
                     <li>• 15 km from Thrissur city center</li>
                     <li>• 2 km from Irinjalakuda Railway Station</li>
                     <li>• 45 km from Cochin International Airport</li>
@@ -77,7 +77,7 @@ export default function LocationPage() {
 
                 <div className="pt-4">
                   <Button
-                    className="bg-cyan-600 hover:bg-cyan-700 w-full"
+                    className="bg-cyan-600 hover:bg-cyan-700 w-full font-creato-thin tracking-wide font-semibold"
                     onClick={() => window.open(mapUrl, "_blank")}
                   >
                     <Navigation className="mr-2 h-4 w-4" />
@@ -99,7 +99,7 @@ export default function LocationPage() {
                     height="100%"
                     style={{ border: 0, minHeight: "500px" }}
                     allowFullScreen=""
-                    loading="lazy"
+                    loading="fast"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Christ College of Engineering Location"
                   ></iframe>
@@ -113,45 +113,45 @@ export default function LocationPage() {
         <div className="mt-12">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center text-2xl text-slate-800">
-                <Clock className="h-6 w-6 mr-3 text-cyan-600" />
+              <CardTitle className="flex items-center text-2xl text-slate-800 font-creato-bl font-normal">
+                <Clock className="h-6 w-6 mr-3 text-cyan-600 " />
                 Visiting Information
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-800 mb-3">Campus Hours</h3>
-                  <div className="space-y-2 text-slate-600">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3 font-coolvetica tracking-wide">Campus Hours</h3>
+                  <div className="space-y-2 text-slate-600 font-dot-matrix">
                     <p>
-                      <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM
+                      <strong className="font-coolvetica text-xl tracking-wide">Monday - Friday:</strong> 8:00 AM - 5:00 PM
                     </p>
                     <p>
-                      <strong>Saturday:</strong> 8:00 AM - 1:00 PM
+                      <strong className="font-coolvetica text-xl tracking-wide">Saturday:</strong> 8:00 AM - 1:00 PM
                     </p>
                     <p>
-                      <strong>Sunday:</strong> Closed
+                      <strong className="font-coolvetica text-xl tracking-wide">Sunday:</strong> Closed
                     </p>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-800 mb-3">Department Office Hours</h3>
-                  <div className="space-y-2 text-slate-600">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3 font-coolvetica tracking-wide">Department Office Hours</h3>
+                  <div className="space-y-2 text-slate-600 font-dot-matrix">
                     <p>
-                      <strong>Monday - Friday:</strong> 9:00 AM - 4:00 PM
+                      <strong className="font-coolvetica text-xl tracking-wide">Monday - Friday:</strong> 9:00 AM - 4:00 PM
                     </p>
                     <p>
-                      <strong>Saturday:</strong> 9:00 AM - 12:00 PM
+                      <strong className="font-coolvetica text-xl tracking-wide">Saturday:</strong> 9:00 AM - 12:00 PM
                     </p>
                     <p>
-                      <strong>Lunch Break:</strong> 12:30 PM - 1:30 PM
+                      <strong className="font-coolvetica text-xl tracking-wide">Lunch Break:</strong> 12:30 PM - 1:30 PM
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="mt-6 p-4 bg-cyan-50 rounded-lg border border-cyan-200">
+              <div className="mt-8 text-center p-4 bg-cyan-50 rounded-lg border border-cyan-200 font-eloquia-text">
                 <p className="text-slate-700">
-                  <strong>Note:</strong> For campus visits and meetings with faculty, please contact us in advance to
+                  <strong className="font-coolvetica">Note:</strong> For campus visits and meetings with faculty, please contact us in advance to
                   ensure availability.
                 </p>
               </div>
