@@ -107,18 +107,18 @@ export function FacultySection() {
                 </div>
                 <CardContent className="p-6 flex flex-col flex-1">
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-slate-800 font-rotifera font-normal">{member.name}</h3>
-                    <p className="text-cyan-600 text-md font-eloquia-text ">{member.position}</p>
+                    <h3 className="text-2xl text-center font-bold text-slate-800 font-mirage font-bold">{member.name}</h3>
+                    <p className="text-cyan-600 text-md text-center font-eloquia-text ">{member.position}</p>
                     
                     {member.specialization && (
-                      <p className="text-sm text-slate-600 font-eloquia-text">
+                      <p className="text-sm text-center text-slate-600 font-dot-matrix">
                         {member.specialization}
                       </p>
                     )}
 
                     <div className="flex items-center justify-center">
                       <Mail className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-slate-600 text-sm font-dot-matrix">{member.email}</span>
+                      <span className="text-slate-600 text-md tracking-wide font-coolvetica">{member.email}</span>
                     </div>
                   </div>
 

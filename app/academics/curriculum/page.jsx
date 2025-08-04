@@ -135,8 +135,8 @@ export default function CurriculumPage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Curriculum</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Curriculum</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">
             B.Tech CSE (Data Science) - Comprehensive curriculum designed to equip students with cutting-edge knowledge
             and skills
           </p>
@@ -148,13 +148,13 @@ export default function CurriculumPage() {
         <Tabs defaultValue="overview" className="w-full">
           <div className="flex justify-center mb-8">
             <TabsList className="bg-slate-100">
-              <TabsTrigger value="overview" className="px-8 py-3">
+              <TabsTrigger value="overview" className="px-8 py-3 font-coolvetica">
                 Overview
               </TabsTrigger>
-              <TabsTrigger value="structure" className="px-8 py-3">
+              <TabsTrigger value="structure" className="px-8 py-3 font-coolvetica">
                 Course Structure
               </TabsTrigger>
-              <TabsTrigger value="syllabus" className="px-8 py-3">
+              <TabsTrigger value="syllabus" className="px-8 py-3 font-coolvetica">
                 Syllabus PDF
               </TabsTrigger>
             </TabsList>
@@ -162,26 +162,26 @@ export default function CurriculumPage() {
 
           <TabsContent value="overview" className="mt-6">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-800 mb-6">B.Tech CSE (Data Science)</h2>
+              <h2 className="text-3xl font-bold text-slate-800 mb-6 font-eloquia-display">B.Tech CSE (Data Science)</h2>
 
-              <div className="prose max-w-none text-gray-700">
-                <p className="mb-4 text-lg">
+              <div className="prose max-w-none text-gray-700 ">
+                <p className="mb-4 text-lg font-eloquia-text">
                   The B.Tech Computer Science and Engineering (Data Science) program at Christ College of Engineering is
                   a comprehensive four-year undergraduate program designed to provide students with a strong foundation
                   in computer science fundamentals along with specialized knowledge in data science and its
                   applications.
                 </p>
 
-                <p className="mb-4">
+                <p className="mb-4 font-eloquia-text">
                   The curriculum is structured to balance theoretical knowledge with practical skills, ensuring that
                   graduates are well-equipped to tackle real-world data challenges. The program covers core areas such
                   as programming, data structures, algorithms, database systems, machine learning, artificial
                   intelligence, big data technologies, and data visualization.
                 </p>
 
-                <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4">Program Highlights</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4 font-eloquia-display">Program Highlights</h3>
 
-                <ul className="list-disc pl-6 space-y-2 mb-6">
+                <ul className="list-disc pl-6 space-y-2 mb-6 font-eloquia-text">
                   <li>Comprehensive coverage of computer science fundamentals and data science specialization</li>
                   <li>Strong emphasis on practical skills through laboratory work and projects</li>
                   <li>Industry-relevant curriculum developed in consultation with experts</li>
@@ -190,11 +190,11 @@ export default function CurriculumPage() {
                   <li>Skill enhancement courses and professional development</li>
                 </ul>
 
-                <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4">Program Outcomes</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4 font-eloquia-display">Program Outcomes</h3>
 
                 <p className="mb-4">Upon completion of the program, graduates will be able to:</p>
 
-                <ul className="list-disc pl-6 space-y-2 mb-6">
+                <ul className="list-disc pl-6 space-y-2 mb-6 font-eloquia-text">
                   <li>Apply mathematical and computational principles to solve complex data science problems</li>
                   <li>Design and implement efficient algorithms for data processing and analysis</li>
                   <li>Develop and deploy machine learning models for various applications</li>
@@ -204,13 +204,13 @@ export default function CurriculumPage() {
                   <li>Collaborate in multidisciplinary teams to solve real-world problems</li>
                 </ul>
 
-                <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4">Career Opportunities</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4 font-eloquia-display">Career Opportunities</h3>
 
-                <p className="mb-4">
+                <p className="mb-4 font-eloquia-text">
                   Graduates of the B.Tech CSE (Data Science) program can pursue careers in various roles such as:
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="grid md:grid-cols-2 gap-4 mb-6 font-eloquia-text">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Data Scientist</li>
                     <li>Machine Learning Engineer</li>
@@ -230,8 +230,8 @@ export default function CurriculumPage() {
                 </div>
 
                 <div className="bg-slate-50 p-6 rounded-lg border border-slate-200 mt-8">
-                  <h4 className="text-xl font-semibold text-slate-800 mb-4">Admission Requirements</h4>
-                  <ul className="list-disc pl-6 space-y-2">
+                  <h4 className="text-xl font-semibold text-slate-800 mb-4 font-eloquia-display">Admission Requirements</h4>
+                  <ul className="list-disc pl-6 space-y-2 font-eloquia-text">
                     <li>10+2 with Mathematics, Physics, and Chemistry</li>
                     <li>Minimum 60% aggregate in qualifying examination</li>
                     <li>Valid score in JEE Main/State Engineering Entrance Examination</li>
@@ -241,7 +241,7 @@ export default function CurriculumPage() {
               </div>
 
               <div className="mt-8 flex justify-center">
-                <Button className="bg-cyan-600 hover:bg-cyan-700">
+                <Button className="bg-cyan-600 hover:bg-cyan-700 font-coolvetica">
                   <Download className="mr-2 h-4 w-4" />
                   Download Complete Brochure
                 </Button>
@@ -255,7 +255,7 @@ export default function CurriculumPage() {
                 {semesters.map((semester, index) => (
                   <Card key={index}>
                     <CardHeader className="bg-slate-50 border-b">
-                      <CardTitle className="flex items-center">
+                      <CardTitle className="flex items-center font-creato-thin tracking-wide">
                         <Calendar className="h-5 w-5 mr-2 text-cyan-600" />
                         {semester.name}
                       </CardTitle>
@@ -264,7 +264,7 @@ export default function CurriculumPage() {
                       <div className="overflow-x-auto">
                         <table className="w-full text-sm">
                           <thead>
-                            <tr className="border-b border-slate-200">
+                            <tr className="border-b border-slate-200 font-creato-bl">
                               <th className="text-left py-2 text-slate-600 font-medium">Code</th>
                               <th className="text-left py-2 text-slate-600 font-medium">Course Name</th>
                               <th className="text-center py-2 text-slate-600 font-medium">Credits</th>
@@ -273,18 +273,18 @@ export default function CurriculumPage() {
                           <tbody>
                             {semester.courses.map((course, courseIndex) => (
                               <tr key={courseIndex} className="border-b border-slate-100">
-                                <td className="py-3 text-slate-800 font-medium text-xs">{course.code}</td>
-                                <td className="py-3 text-slate-700 text-xs">{course.name}</td>
-                                <td className="py-3 text-center text-slate-700 text-xs">{course.credits}</td>
+                                <td className="py-3 text-slate-800 font-normal text-xs font-creato-bl">{course.code}</td>
+                                <td className="py-3 text-slate-700 font-coolvetica p-4">{course.name}</td>
+                                <td className="py-3 text-center text-slate-700 font-dot-matrix text-md">{course.credits}</td>
                               </tr>
                             ))}
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td colSpan="2" className="py-3 text-right font-medium text-slate-700 text-sm">
+                              <td colSpan="2" className="py-3 text-right font-medium text-slate-700 text-sm font-creato-bl">
                                 Total Credits:
                               </td>
-                              <td className="py-3 text-center font-medium text-slate-800 text-sm">
+                              <td className="py-3 text-center font-medium text-slate-800 text-sm font-creato-bl">
                                 {semester.courses.reduce((sum, course) => {
                                   const credits =
                                     typeof course.credits === "string"
@@ -303,7 +303,7 @@ export default function CurriculumPage() {
               </div>
 
               <div className="mt-12 space-y-6">
-                <h3 className="text-2xl font-bold text-slate-800">Additional Components</h3>
+                <h3 className="text-2xl font-bold text-slate-800 font-mirage">Additional Components</h3>
 
                 <div className="grid md:grid-cols-3 gap-6">
                   <Card>
@@ -311,8 +311,8 @@ export default function CurriculumPage() {
                       <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mb-4">
                         <BookOpen className="h-6 w-6 text-cyan-600" />
                       </div>
-                      <h4 className="text-lg font-semibold text-slate-800 mb-2">Industrial Training</h4>
-                      <p className="text-slate-600">Mandatory industrial training in Semester 7</p>
+                      <h4 className="text-lg font-semibold text-slate-800 mb-2 font-mirage">Industrial Training</h4>
+                      <p className="text-slate-600 font-coolvetica">Mandatory industrial training in <br></br> Semester 7</p>
                     </CardContent>
                   </Card>
 
@@ -321,8 +321,8 @@ export default function CurriculumPage() {
                       <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mb-4">
                         <FileText className="h-6 w-6 text-cyan-600" />
                       </div>
-                      <h4 className="text-lg font-semibold text-slate-800 mb-2">Major Project</h4>
-                      <p className="text-slate-600">Two-phase major project in final year</p>
+                      <h4 className="text-lg font-semibold text-slate-800 mb-2 font-mirage">Major Project</h4>
+                      <p className="text-slate-600 font-coolvetica">Two-phase major project in final year</p>
                     </CardContent>
                   </Card>
 
@@ -345,15 +345,15 @@ export default function CurriculumPage() {
                           <circle cx="12" cy="8" r="2"></circle>
                         </svg>
                       </div>
-                      <h4 className="text-lg font-semibold text-slate-800 mb-2">Skill Enhancement</h4>
-                      <p className="text-slate-600">Regular skill enhancement courses and MOOCs</p>
+                      <h4 className="text-lg font-semibold text-slate-800 mb-2 font-mirage">Skill Enhancement</h4>
+                      <p className="text-slate-600 font-coolvetica">Regular skill enhancement courses and MOOCs</p>
                     </CardContent>
                   </Card>
                 </div>
 
                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
-                  <h4 className="text-lg font-semibold text-amber-800 mb-3">Credit Notes:</h4>
-                  <ul className="text-amber-700 space-y-1 text-sm">
+                  <h4 className="text-lg font-normal text-amber-800 mb-3 font-creato-bl">Credit Notes:</h4>
+                  <ul className="text-amber-700 space-y-1 text-sm font-eloquia-text">
                     <li>
                       <strong>*</strong> - Non-credit bearing courses for holistic development
                     </li>
@@ -367,12 +367,12 @@ export default function CurriculumPage() {
           </TabsContent>
 
           <TabsContent value="syllabus" className="mt-6">
-            <div className="bg-white rounded-lg shadow-sm border h-[800px]">
+            <div className="bg-white rounded-lg shadow-sm border font-creato-bl  h-[700px]">
               <PdfViewer pdfUrl={syllabusUrl} title="B.Tech CSE (Data Science) Curriculum" />
             </div>
 
             <div className="mt-8 text-center">
-              <Button className="bg-cyan-600 hover:bg-cyan-700" onClick={() => window.open(syllabusUrl, "_blank")}>
+              <Button className="bg-cyan-600 hover:bg-cyan-700 font-coolvetica" onClick={() => window.open(syllabusUrl, "_blank")}>
                 <Download className="mr-2 h-4 w-4" />
                 Download Syllabus PDF
               </Button>
