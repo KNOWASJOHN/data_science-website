@@ -18,7 +18,7 @@ export function ProgramsSection() {
           <Card className="hover:shadow-xl transition-all duration-300 hover:scale-105 hover-lift flex flex-col h-full">
             <CardHeader className="text-center pb-4">
               <GraduationCap className="h-16 w-16 text-cyan-600 mx-auto mb-4" />
-              <CardTitle className="text-2xl text-slate-800 font-mirage">B.Tech Data Science</CardTitle>
+              <CardTitle className="text-2xl text-slate-800 font-mirage tracking-wide">B.Tech Data Science</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <div className="flex-grow">
@@ -41,7 +41,7 @@ export function ProgramsSection() {
           <Card className="hover:shadow-xl transition-all duration-300 hover:scale-105 hover-lift flex flex-col h-full">
             <CardHeader className="text-center pb-4">
               <BookOpen className="h-16 w-16 text-cyan-600 mx-auto mb-4" />
-              <CardTitle className="text-2xl text-slate-800 font-mirage">Research Programs</CardTitle>
+              <CardTitle className="text-2xl text-slate-800 tracking-wide font-mirage">Research Programs</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <div className="flex-grow">
@@ -63,7 +63,7 @@ export function ProgramsSection() {
           <Card className="hover:shadow-xl transition-all duration-300 hover:scale-105 hover-lift flex flex-col h-full">
             <CardHeader className="text-center pb-4">
               <Briefcase className="h-16 w-16 text-cyan-600 mx-auto mb-4" />
-              <CardTitle className="text-2xl text-slate-800 font-mirage">Industry Training</CardTitle>
+              <CardTitle className="text-2xl text-slate-800 font-mirage tracking-wide">Industry Training</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <div className="flex-grow">
