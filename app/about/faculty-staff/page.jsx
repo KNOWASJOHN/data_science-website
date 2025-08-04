@@ -65,8 +65,8 @@ export default function FacultyStaffPage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Faculty & Staff</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Faculty & Staff</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">
             Meet our distinguished faculty members and dedicated staff who make our department exceptional
           </p>
         </div>
@@ -77,10 +77,10 @@ export default function FacultyStaffPage() {
         <Tabs defaultValue="faculty" className="w-full">
           <div className="flex justify-center mb-8">
             <TabsList className="bg-slate-100">
-              <TabsTrigger value="faculty" className="px-8 py-3">
+              <TabsTrigger value="faculty" className="px-8 py-3 font-creato-bl">
                 Faculty
               </TabsTrigger>
-              <TabsTrigger value="staff" className="px-8 py-3">
+              <TabsTrigger value="staff" className="px-8 py-3 font-creato-bl">
                 Staff
               </TabsTrigger>
             </TabsList>
@@ -99,37 +99,37 @@ export default function FacultyStaffPage() {
                   </div>
                   <CardContent className="p-6">
                     <div className="text-center mb-4">
-                      <h3 className="text-md font-bold text-slate-800 mb-2 font-rotifera">{member.name}</h3>
-                      <p className="text-cyan-600 font-medium">{member.position}</p>
+                      <h3 className="text-2xl font-bold text-slate-800 mb-2 font-mirage">{member.name}</h3>
+                      <p className="text-cyan-600 font-medium font-eloquia-text text-xl">{member.position}</p>
                     </div>
 
                     <div className="space-y-4">
                       <div className="text-sm text-gray-700">
-                        <p className="font-semibold text-slate-800 mb-1">Specialization:</p>
-                        <p>{member.specialization}</p>
+                        <p className="font-semibold text-slate-800 mb-1 font-eloquia-text">Specialization:</p>
+                        <p className="font-dot-matrix">{member.specialization}</p>
                       </div>
 
                       <div className="text-sm text-gray-700">
-                        <p className="font-semibold text-slate-800 mb-1">Education:</p>
-                        <p>{member.education}</p>
+                        <p className="font-semibold text-slate-800 mb-1 font-eloquia-text">Education:</p>
+                        <p className="font-dot-matrix">{member.education}</p>
                       </div>
 
                       <div className="text-sm text-gray-700">
-                        <p className="font-semibold text-slate-800 mb-1">Experience:</p>
-                        <p>{member.experience}</p>
+                        <p className="font-semibold text-slate-800 mb-1 font-eloquia-text">Experience:</p>
+                        <p className="font-dot-matrix">{member.experience}</p>
                       </div>
 
                       {member.publications && (
                         <div className="text-sm text-gray-700">
-                          <p className="font-semibold text-slate-800 mb-1">Publications:</p>
-                          <p>{member.publications}</p>
+                          <p className="font-semibold text-slate-800 mb-1 font-eloquia-text">Publications:</p>
+                          <p className="font-dot-matrix">{member.publications}</p>
                         </div>
                       )}
 
                       {member.awards && member.awards.length > 0 && (
                         <div className="text-sm text-gray-700">
-                          <p className="font-semibold text-slate-800 mb-1">Awards:</p>
-                          <ul className="list-disc list-inside">
+                          <p className="font-semibold text-slate-800 mb-1 font-eloquia-text">Awards:</p>
+                          <ul className="list-disc list-inside font-dot-matrix">
                             {member.awards.map((award, idx) => (
                               <li key={idx}>{award}</li>
                             ))}
@@ -138,8 +138,8 @@ export default function FacultyStaffPage() {
                       )}
 
                       <div className="text-sm text-gray-700">
-                        <p className="font-semibold text-slate-800 mb-1">Bio:</p>
-                        <p className="text-justify">{member.bio}</p>
+                        <p className="font-semibold text-slate-800 mb-1 font-eloquia-text">Bio:</p>
+                        <p className="text-justify font-dot-matrix">{member.bio}</p>
                       </div>
 
                       <div className="pt-4 border-t border-gray-200 space-y-2">
@@ -171,17 +171,17 @@ export default function FacultyStaffPage() {
                     />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-slate-800 mb-1">{member.name}</h3>
-                    <p className="text-cyan-600 font-medium mb-4">{member.position}</p>
+                    <h3 className="text-xl font-bold text-slate-800 mb-1 font-mirage">{member.name}</h3>
+                    <p className="text-cyan-600 font-medium mb-4 font-eloquia-text">{member.position}</p>
 
                     <div className="space-y-3">
                       <div className="flex items-center">
                         <Mail className="h-4 w-4 mr-2 text-slate-600" />
-                        <span className="text-gray-700">{member.email}</span>
+                        <span className="text-gray-700 font-dot-matrix">{member.email}</span>
                       </div>
                       <div className="flex items-center">
                         <Phone className="h-4 w-4 mr-2 text-slate-600" />
-                        <span className="text-gray-700">{member.phone}</span>
+                        <span className="text-gray-700 font-dot-matrix">{member.phone}</span>
                       </div>
                     </div>
                   </CardContent>
