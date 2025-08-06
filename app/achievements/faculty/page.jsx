@@ -134,7 +134,7 @@ export default function FacultyAchievementsPage() {
                     <h3 className="text-lg font-bold text-slate-800 font-creato-thin">{achievement.faculty}</h3>
                   </div>
                   <div className="mt-2 flex justify-center">
-                  {achievement.icon}
+                    {achievement.icon}
                   </div>
                 </div>
                 <h4 className="text-xl font-semibold text-slate-800 mb-2 line-clamp-2 font-creato-thin">{achievement.title}</h4>
