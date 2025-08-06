@@ -86,7 +86,7 @@ export default function StudentAchievementsPage() {
               className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative h-48 bg-slate-100 overflow-hidden">
+              <div className="relative h-48 bg-slate-100 overflow-hidden font-coolvetica tracking-wide">
                 <ImageCarousel images={achievement.images} alt={achievement.title} className="h-full" />
                 <div className="absolute top-2 left-3">
                   <Badge className={categoryColors[achievement.category] || "bg-slate-100 text-slate-800"}>

@@ -66,8 +66,8 @@ export default function DepartmentAwardsPage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Department Awards</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Department Awards</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">
             Recognitions and accolades received by the Department of Data Science
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function DepartmentAwardsPage() {
             >
               <div className="relative h-48 bg-slate-100 overflow-hidden">
                 <ImageCarousel images={award.images} alt={award.title} className="h-full" />
-                <div className="absolute top-1 left-2">
+                <div className="absolute top-1 left-2 font-coolvetica tracking-wide">
                   <Badge className={categoryColors[award.category] || "bg-slate-100 text-slate-800"}>
                     {award.category}
                   </Badge>
@@ -94,12 +94,12 @@ export default function DepartmentAwardsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-center mb-4">{award.icon}</div>
 
-                <h3 className="text-xl font-bold text-slate-800 mb-2 text-center line-clamp-2">{award.title}</h3>
-                <p className="text-cyan-600 font-medium mb-4 text-center">Awarded by: {award.organization}</p>
-                <p className="text-slate-600 text-sm mb-4 line-clamp-3">{award.description}</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2 text-center line-clamp-2 font-mirage">{award.title}</h3>
+                <p className="text-cyan-600 font-semibold tracking-wide mb-4 text-center font-creato-thin">Awarded by: {award.organization}</p>
+                <p className="text-slate-600 text-sm mb-4 line-clamp-3 font-coolvetica">{award.description}</p>
 
 
-                  <span className="text-sm text-slate-500 font-dot-matrix">{award.date}</span>
+                  <span className="text-md font-normal text-slate-500 font-dot-matrix">{award.date}</span>
               </CardContent>
             </Card>
           ))}
@@ -107,72 +107,72 @@ export default function DepartmentAwardsPage() {
 
         {/* Department Rankings Section */}
         <div className="mt-16">
-          <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Department Rankings</h2>
+          <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center font-mirage">Department Rankings</h2>
 
           <Card>
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-800 mb-4">National Rankings</h3>
+                  <h3 className="text-xl font-semibold text-slate-800 mb-4 font-eloquia-display">National Rankings</h3>
                   <ul className="space-y-4">
                     <li className="flex items-start">
-                      <div className="bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
+                      <div className="bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0 font-stretch">
                         1
                       </div>
                       <div>
-                        <p className="font-medium text-slate-800">Top Emerging Data Science Department</p>
-                        <p className="text-sm text-slate-600">National Education Survey 2024</p>
+                        <p className="font-medium text-slate-800 font-creato-bl">Top Emerging Data Science Department</p>
+                        <p className="text-md text-slate-700 font-creato-thin">National Education Survey 2024</p>
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <div className="bg-gray-100 text-gray-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
+                      <div className="font-stretch bg-gray-100 text-gray-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
                         2
                       </div>
                       <div>
-                        <p className="font-medium text-slate-800">Best Industry Collaboration</p>
-                        <p className="text-sm text-slate-600">Tech Education Rankings 2024</p>
+                        <p className="font-medium text-slate-800 font-creato-bl">Best Industry Collaboration</p>
+                        <p className="text-md text-slate-700 font-creato-thin">Tech Education Rankings 2024</p>
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <div className="bg-amber-800 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
+                      <div className="font-stretch bg-amber-800 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
                         3
                       </div>
                       <div>
-                        <p className="font-medium text-slate-800">Research Output in Data Science</p>
-                        <p className="text-sm text-slate-600">Academic Research Index 2023</p>
+                        <p className="font-medium text-slate-800 font-creato-bl">Research Output in Data Science</p>
+                        <p className="text-md text-slate-700 font-creato-thin">Academic Research Index 2023</p>
                       </div>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-800 mb-4">State Rankings</h3>
+                  <h3 className="text-xl font-semibold text-slate-800 mb-4 font-eloquia-display">State Rankings</h3>
                   <ul className="space-y-4">
                     <li className="flex items-start">
-                      <div className="bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
+                      <div className="font-stretch bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
                         1
                       </div>
                       <div>
-                        <p className="font-medium text-slate-800">Best Data Science Department</p>
-                        <p className="text-sm text-slate-600">State Higher Education Survey 2024</p>
+                        <p className="font-medium text-slate-800 font-creato-bl">Best Data Science Department</p>
+                        <p className="text-md text-slate-700 font-creato-thin">State Higher Education Survey 2024</p>
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <div className="bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
+                      <div className="font-stretch bg-amber-100 text-amber-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
                         1
                       </div>
                       <div>
-                        <p className="font-medium text-slate-800">Student Placement Rate</p>
-                        <p className="text-sm text-slate-600">State Employment Index 2023</p>
+                        <p className="font-medium text-slate-800 font-creato-bl">Student Placement Rate</p>
+                        <p className="text-md text-slate-700 font-creato-thin">State Employment Index 2023</p>
                       </div>
                     </li>
                     <li className="flex items-start">
-                      <div className="bg-gray-100 text-gray-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
+                      <div className="font-stretch bg-gray-100 text-gray-800 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
                         2
                       </div>
                       <div>
-                        <p className="font-medium text-slate-800">Innovation & Entrepreneurship</p>
-                        <p className="text-sm text-slate-600">State Innovation Council Rankings 2023</p>
+                        <p className="font-medium text-slate-800 font-creato-bl">Innovation & Entrepreneurship</p>
+                        <p className="text-md text-slate-700 font-creato-thin">State Innovation Council Rankings 2023</p>
                       </div>
                     </li>
                   </ul>

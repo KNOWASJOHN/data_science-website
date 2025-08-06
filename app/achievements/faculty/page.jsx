@@ -118,7 +118,7 @@ export default function FacultyAchievementsPage() {
               className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative h-48 bg-slate-100 overflow-hidden">
+              <div className="relative h-48 bg-slate-100 overflow-hidden font-coolvetica tracking-wide">
                 <ImageCarousel images={Array.isArray(achievement.images) ? achievement.images : []} alt={achievement.faculty} className="h-full" style={{ objectFit: 'contain', objectPosition: 'center' }} />
                 <div className="absolute top-1 left-3">
                   <Badge className={categoryColors[achievement.category] || "bg-slate-100 text-slate-800"}>
