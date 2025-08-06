@@ -1,70 +1,91 @@
+"use client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Trophy, Award, Star, Medal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ImageCarousel } from "@/components/image-carousel"
+import { useEffect, useState } from "react"
+import { database } from "@/app/database/firebaseConfig"
+import { ref, onValue } from "firebase/database"
 
 export function AchievementsGlimpse() {
-  const achievements = [
-    {
-      title: "National Data Science Hackathon Winners",
-      description: "Our students secured first place in the National Data Science Hackathon 2024",
-      icon: <Trophy className="h-8 w-8 text-amber-500" />,
-      category: "Student Achievement",
-      images: [
-        "/placeholder.svg?height=200&width=300",
-        "/placeholder.svg?height=200&width=300&text=Team+Presentation",
-        "/placeholder.svg?height=200&width=300&text=Award+Ceremony",
-        "/placeholder.svg?height=200&width=300&text=Victory+Celebration",
-      ],
-      type: "students",
-    },
-    {
-      title: "Research Grant Awarded",
-      description: "₹50 Lakhs research grant awarded for AI in Healthcare project",
-      icon: <Award className="h-8 w-8 text-cyan-500" />,
-      category: "Faculty Achievement",
-      images: [
-        "/placeholder.svg?height=200&width=300",
-        "/placeholder.svg?height=200&width=300&text=Grant+Announcement",
-        "/placeholder.svg?height=200&width=300&text=Research+Lab",
-        "/placeholder.svg?height=200&width=300&text=Project+Team",
-      ],
-      type: "faculty",
-    },
-    {
-      title: "Best Emerging Department Award",
-      description: "Recognized as the Best Emerging Department at the Education Excellence Awards 2024",
-      icon: <Star className="h-8 w-8 text-amber-500" />,
-      category: "Department Award",
-      images: [
-        "/placeholder.svg?height=200&width=300",
-        "/placeholder.svg?height=200&width=300&text=Award+Ceremony",
-        "/placeholder.svg?height=200&width=300&text=Department+Team",
-        "/placeholder.svg?height=200&width=300&text=Trophy+Display",
-      ],
-      type: "department",
-    },
-    {
-      title: "Faculty Excellence Award",
-      description: "Dr. Sarah Johnson received the Faculty Excellence Award for contributions to ML research",
-      icon: <Medal className="h-8 w-8 text-blue-500" />,
-      category: "Faculty Achievement",
-      images: [
-        "/placeholder.svg?height=200&width=300",
-        "/placeholder.svg?height=200&width=300&text=Award+Presentation",
-        "/placeholder.svg?height=200&width=300&text=Research+Work",
-        "/placeholder.svg?height=200&width=300&text=Faculty+Recognition",
-      ],
-      type: "faculty",
-    },
-  ]
+  const [achievements, setAchievements] = useState([])
+
+  useEffect(() => {
+    // Fetch recent achievements from all three categories
+    const fetchAchievements = async () => {
+      const paths = {
+        student: ref(database, "achievements/student"),
+        faculty: ref(database, "achievements/faculty"),
+        department: ref(database, "achievements/department")
+      }
+
+      let latestAchievements = {}
+
+      Object.entries(paths).forEach(([type, reference]) => {
+        onValue(reference, (snapshot) => {
+          const data = snapshot.val()
+          if (data) {
+            // Get the most recent achievement for this category
+            const items = Object.keys(data).map(key => ({
+              ...data[key],
+              id: key,
+              type: type
+            }))
+            // Sort by date (assuming date is in a format that can be compared)
+            const sortedItems = items.sort((a, b) => new Date(b.date) - new Date(a.date))
+            const mostRecent = sortedItems[0]
+
+            setAchievements(prev => {
+              const filtered = prev.filter(item => item.type !== type)
+              return [...filtered, mostRecent].sort((a, b) => {
+                // Custom sort order: student, faculty, department
+                const typeOrder = { student: 1, faculty: 2, department: 3 }
+                return typeOrder[a.type] - typeOrder[b.type]
+              })
+            })
+          }
+        })
+      })
+    }
+
+    fetchAchievements()
+
+    // Cleanup subscriptions
+    return () => {
+      const paths = ["student", "faculty", "department"]
+      paths.forEach(path => {
+        const reference = ref(database, `achievements/${path}`)
+        onValue(reference, () => { })
+      })
+    }
+  }, [])
+  const iconMap = {
+    Award: <Award className="h-8 w-8 text-cyan-500" />,
+    Trophy: <Trophy className="h-8 w-8 text-amber-500" />,
+    Star: <Star className="h-8 w-8 text-amber-500" />,
+    Medal: <Medal className="h-8 w-8 text-blue-500" />
+  }
 
   // Category colors
   const categoryColors = {
-    "Student Achievement": "bg-green-100 text-green-800",
-    "Faculty Achievement": "bg-cyan-100 text-cyan-800",
-    "Department Award": "bg-amber-100 text-amber-800",
+    // Student categories
+    "Competition": "bg-amber-100 text-amber-800",
+    "Research": "bg-cyan-100 text-cyan-800",
+    "Recognition": "bg-blue-100 text-blue-800",
+    "Award": "bg-green-100 text-green-800",
+    "Placement": "bg-purple-100 text-purple-800",
+    "Scholarship": "bg-pink-100 text-pink-800",
+    // Faculty categories
+    "Research Grant": "bg-cyan-100 text-cyan-800",
+    "Patent": "bg-green-100 text-green-800",
+    "Collaboration": "bg-purple-100 text-purple-800",
+    // Department categories
+    "Department Excellence": "bg-amber-100 text-amber-800",
+    "Research Excellence": "bg-cyan-100 text-cyan-800",
+    "Industry Connect": "bg-blue-100 text-blue-800",
+    "Innovation": "bg-purple-100 text-purple-800",
+    "Academic Excellence": "bg-green-100 text-green-800"
   }
 
   return (
@@ -80,31 +101,57 @@ export function AchievementsGlimpse() {
           </Button>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {achievements.map((achievement, index) => (
+        <div className="grid md:grid-cols-3 gap-6">
+          {achievements.slice(0, 3).map((achievement, index) => (
             <Card
               key={index}
               className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative h-40">
-                <ImageCarousel images={achievement.images} alt={achievement.title} className="h-full" />
-                <div className="absolute top-3 right-3">
+              <div className="relative h-48 bg-slate-100 overflow-hidden font-coolvetica tracking-wide">
+                <ImageCarousel images={achievement.images || []} alt={achievement.title} className="h-full" style={{ objectFit: 'contain', objectPosition: 'center' }} />
+                <div className="absolute top-1 left-2">
                   <Badge className={categoryColors[achievement.category] || "bg-slate-100 text-slate-800"}>
                     {achievement.category}
                   </Badge>
                 </div>
               </div>
 
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  {achievement.icon}
-                  <div className="ml-3">
-                    <h3 className="text-lg font-semibold text-slate-800 line-clamp-2">{achievement.title}</h3>
+              <CardContent className="p-3 text-center">
+                <div className="flex-shrink-0 absolute right-4 bottom-13 grid">
+                  {achievement.icon ? iconMap[achievement.icon] : <Award className="h-8 w-8 text-cyan-500" />}
+                </div>
+                <div className="flex items-center justify-center mb-4 gap-3">
+                  <div>
+                    {(achievement.type === 'student' || achievement.type === 'faculty') ? (<>
+
+                      <h4 className="text-xl font-semibold text-slate-800 line-clamp-2 font-mirage">
+                        {achievement.name}
+                      </h4></>
+                    ) : (
+                      <h4 className="text-xl font-semibold text-slate-800 line-clamp-2 font-mirage">
+                        {achievement.title}
+                      </h4>
+                    )}
                   </div>
                 </div>
 
-                <p className="text-slate-600 text-sm line-clamp-3">{achievement.description}</p>
+                {achievement.type === 'faculty' && (
+                  <h3 className="text-lg font-bold text-cyan-800 font-creato-thin">{achievement.faculty}</h3>
+                )}
+                {achievement.type === 'student' && (
+                  <p className="text-lg text-cyan-800 font-bold tracking-wide font-creato-thin">Batch: {achievement.batch}</p>
+                )}
+                {achievement.organization && (
+                  <p className="text-cyan-800 font-semibold tracking-wide mb-4 text-center font-creato-thin">
+                    Awarded by: {achievement.organization}
+                  </p>
+                )}
+                <p className="text-slate-600 text-sm mb-4 line-clamp-3 font-coolvetica">{achievement.description}</p>
+
+                <div className="flex justify-center">
+                  <span className="text-sm text-slate-500 font-dot-matrix">{achievement.date}</span>
+                </div>
               </CardContent>
             </Card>
           ))}

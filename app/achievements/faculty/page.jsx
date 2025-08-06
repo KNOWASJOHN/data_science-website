@@ -130,7 +130,7 @@ export default function FacultyAchievementsPage() {
               <CardContent className="p-3 text-center">
                 <div className="items-center mb-4">
                   <div className="text-center">
-                    <h4 className="text-xl font-semibold text-slate-800 line-clamp-2 font-coolvetica">{achievement.id}</h4>
+                    <h4 className="text-xl font-semibold text-slate-800 line-clamp-2 font-coolvetica">{achievement.name}</h4>
                     <h3 className="text-lg font-bold text-slate-800 font-creato-thin">{achievement.faculty}</h3>
                   </div>
                   <div className="mt-2 flex justify-center">
