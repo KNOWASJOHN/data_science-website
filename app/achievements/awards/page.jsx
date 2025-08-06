@@ -1,100 +1,61 @@
+"use client"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Trophy, Award, Medal, Star } from "lucide-react"
 import { ImageCarousel } from "@/components/image-carousel"
+import { useEffect, useState } from "react"
+import { database } from "@/app/database/firebaseConfig"
+import { ref, onValue } from "firebase/database"
 
 export default function DepartmentAwardsPage() {
-  const awards = [
-    {
-      id: 1,
-      title: "Best Emerging Department Award",
-      organization: "Education Excellence Awards",
-      description:
-        "Recognized as the Best Emerging Department at the Education Excellence Awards 2024 for innovative teaching methodologies and industry-relevant curriculum.",
-      date: "May 2024",
-      category: "Department Excellence",
-      icon: <Trophy className="h-12 w-12 text-amber-500" />,
-      images: [
-        "/placeholder.svg?height=300&width=300",
-        "/placeholder.svg?height=300&width=300&text=Award+Ceremony",
-        "/placeholder.svg?height=300&width=300&text=Department+Team",
-        "/placeholder.svg?height=300&width=300&text=Trophy+Display",
-      ],
-    },
-    {
-      id: 2,
-      title: "Outstanding Research Department",
-      organization: "National Research Foundation",
-      description:
-        "Awarded the Outstanding Research Department recognition by the National Research Foundation for significant contributions to data science research and publications.",
-      date: "March 2024",
-      category: "Research Excellence",
-      icon: <Award className="h-12 w-12 text-cyan-600" />,
-      images: [
-        "/placeholder.svg?height=300&width=300",
-        "/placeholder.svg?height=300&width=300&text=Research+Lab",
-        "/placeholder.svg?height=300&width=300&text=Publication",
-        "/placeholder.svg?height=300&width=300&text=Data+Analysis",
-      ],
-    },
-    {
-      id: 3,
-      title: "Best Industry Collaboration Award",
-      organization: "Industry-Academia Conclave",
-      description:
-        "Received the Best Industry Collaboration Award at the Industry-Academia Conclave 2024 for establishing strong partnerships with leading technology companies and startups.",
-      date: "February 2024",
-      category: "Industry Connect",
-      icon: <Medal className="h-12 w-12 text-blue-600" />,
-      images: [
-        "/placeholder.svg?height=300&width=300",
-        "/placeholder.svg?height=300&width=300&text=Industry+Partners",
-        "/placeholder.svg?height=300&width=300&text=Joint+Projects",
-        "/placeholder.svg?height=300&width=300&text=Networking+Event",
-      ],
-    },
-    {
-      id: 4,
-      title: "Innovation Hub Recognition",
-      organization: "State Innovation Council",
-      description:
-        "Recognized as an Innovation Hub by the State Innovation Council for fostering a culture of innovation and entrepreneurship among students.",
-      date: "December 2023",
-      category: "Innovation",
-      icon: <Star className="h-12 w-12 text-purple-600" />,
-      images: [
-        "/placeholder.svg?height=300&width=300",
-        "/placeholder.svg?height=300&width=300&text=Innovation+Lab",
-        "/placeholder.svg?height=300&width=300&text=Student+Projects",
-        "/placeholder.svg?height=300&width=300&text=Entrepreneurship+Workshop",
-      ],
-    },
-    {
-      id: 5,
-      title: "Academic Excellence Award",
-      organization: "Higher Education Department",
-      description:
-        "Awarded the Academic Excellence Award by the Higher Education Department for maintaining high academic standards and achieving exceptional student outcomes.",
-      date: "October 2023",
-      category: "Academic Excellence",
-      icon: <Award className="h-12 w-12 text-green-600" />,
-      images: [
-        "/placeholder.svg?height=300&width=300",
-        "/placeholder.svg?height=300&width=300&text=Academic+Results",
-        "/placeholder.svg?height=300&width=300&text=Student+Achievements",
-        "/placeholder.svg?height=300&width=300&text=Faculty+Excellence",
-      ],
-    },
-  ]
+  const [awards, setAwards] = useState([])
 
+  // Icon mapping
+  const iconMap = {
+    Trophy: <Trophy className="h-12 w-12 text-amber-500" />,
+    Award: <Award className="h-12 w-12 text-cyan-600" />,
+    Medal: <Medal className="h-12 w-12 text-blue-600" />,
+    Star: <Star className="h-12 w-12 text-purple-600" />
+  }
+
+  useEffect(() => {
+    const achievementsRef = ref(database, "achievements/department")
+    onValue(achievementsRef, (snapshot) => {
+      const data = snapshot.val()
+      if (data) {
+        const awardsArray = Object.keys(data).map((key) => {
+          const { title, description, date, category, organization, images, icon } = data[key]
+          return {
+            id: key,
+            title: title || "",
+            description: description || "",
+            date: date || "",
+            category: category || "",
+            organization: organization || "",
+            images: images || [],
+            icon: iconMap[icon] || iconMap.Award
+          }
+        })
+        setAwards(awardsArray)
+      } else {
+        setAwards([])
+      }
+    })
+
+    // Cleanup subscription on unmount
+    return () => {
+      onValue(achievementsRef, () => {})
+    }
+  }, [])
   // Category colors
+
   const categoryColors = {
     "Department Excellence": "bg-amber-100 text-amber-800",
     "Research Excellence": "bg-cyan-100 text-cyan-800",
     "Industry Connect": "bg-blue-100 text-blue-800",
-    Innovation: "bg-purple-100 text-purple-800",
+    "Innovation": "bg-purple-100 text-purple-800",
     "Academic Excellence": "bg-green-100 text-green-800",
   }
 
@@ -123,7 +84,7 @@ export default function DepartmentAwardsPage() {
             >
               <div className="relative h-48 bg-slate-100 overflow-hidden">
                 <ImageCarousel images={award.images} alt={award.title} className="h-full" />
-                <div className="absolute top-3 right-3">
+                <div className="absolute top-1 left-2">
                   <Badge className={categoryColors[award.category] || "bg-slate-100 text-slate-800"}>
                     {award.category}
                   </Badge>
@@ -137,9 +98,8 @@ export default function DepartmentAwardsPage() {
                 <p className="text-cyan-600 font-medium mb-4 text-center">Awarded by: {award.organization}</p>
                 <p className="text-slate-600 text-sm mb-4 line-clamp-3">{award.description}</p>
 
-                <div className="flex justify-center items-center">
-                  <span className="text-xs text-slate-500">{award.date}</span>
-                </div>
+
+                  <span className="text-sm text-slate-500 font-dot-matrix">{award.date}</span>
               </CardContent>
             </Card>
           ))}
