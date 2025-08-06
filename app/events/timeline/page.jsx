@@ -128,7 +128,7 @@ export default function TimelinePage() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-600 mx-auto mb-4"></div>
-          <p className="text-xl text-slate-600">Loading events...</p>
+          <p className="text-xl text-slate-600 font-coolvetica">Loading events...</p>
         </div>
       </div>
     )
@@ -152,10 +152,10 @@ export default function TimelinePage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12 animate-fade-in">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4 animate-slide-up">
+          <h1 className="text-4xl font-bold mb-4 animate-slide-up font-mirage">
             Events Timeline
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl animate-slide-up animation-delay-200">
+          <p className="text-xl text-gray-300 max-w-3xl animate-slide-up animation-delay-200 font-creato-thin">
             Explore our upcoming and past events in an interactive calendar view
           </p>
         </div>
@@ -164,7 +164,7 @@ export default function TimelinePage() {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         {/* Search Bar */}
-        <div className="max-w-2xl mx-auto mb-10 animate-slide-up animation-delay-400">
+        <div className="max-w-2xl mx-auto mb-10 animate-slide-up animation-delay-400 font-coolvetica">
           <div className="flex gap-2">
             <div className="relative flex-grow">
               <Input
@@ -243,7 +243,7 @@ export default function TimelinePage() {
                         </div>
                       )}
                       {event.featured && (
-                        <Badge className="absolute top-2 right-2 bg-cyan-600 hover:bg-cyan-700 animate-pulse">
+                        <Badge className="absolute top-2 right-2 bg-cyan-600 hover:bg-cyan-700 animate-pulse font-creato-thin tracking-wide">
                           Featured
                         </Badge>
                       )}
@@ -252,7 +252,7 @@ export default function TimelinePage() {
                     {/* Content */}
                     <div className="relative">
                       <CardHeader>
-                        <div className="mb-2">
+                        <div className="mb-2 text-lg font-creato-thin tracking-wide">
                           <Badge
                             className={
                               categoryColors[event.category] ||
@@ -262,13 +262,13 @@ export default function TimelinePage() {
                             {event.category}
                           </Badge>
                         </div>
-                        <CardTitle className="text-xl text-slate-800 line-clamp-2 font-bold">
+                        <CardTitle className="text-2xl text-slate-800 line-clamp-2 font-bold font-mirage tracking-wide">
                           {event.title}
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
                         <div className="space-y-4 mb-6">
-                          <div className="flex items-center text-slate-600">
+                          <div className="flex items-center text-slate-600 font-creato-bl">
                             <Calendar className="h-5 w-5 mr-3 text-cyan-500" />
                             <span className="text-sm">
                               {event.date.toLocaleDateString("en-US", {
@@ -291,22 +291,22 @@ export default function TimelinePage() {
                           </div>
                           <div className="flex items-center text-slate-600">
                             <Clock className="h-5 w-5 mr-3 text-cyan-600" />
-                            <span className="text-sm">{event.time}</span>
+                            <span className="text-sm font-creato-bl">{event.time}</span>
                           </div>
                           <div className="flex items-center text-slate-600">
                             <MapPin className="h-5 w-5 mr-3 text-cyan-600" />
-                            <span className="text-sm">{event.location}</span>
+                            <span className="text-sm font-creato-bl">{event.location}</span>
                           </div>
                           <div className="flex items-center text-slate-600">
                             <Users className="h-5 w-5 mr-3 text-cyan-600" />
-                            <span className="text-sm">{event.organizer}</span>
+                            <span className="text-sm font-creato-bl">{event.organizer}</span>
                           </div>
                         </div>
-                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6">
+                        <p className="text-slate-800 text-base leading-relaxed line-clamp-3 mb-6 font-creato-thin">
                           {event.description}
                         </p>
                         <Button 
-                          className="w-full bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 hover:scale-105"
+                          className="w-full bg-cyan-600 hover:bg-cyan-700 transition-all duration-300 hover:scale-105 font-eloquia-text"
                           onClick={() => window.location.href = `/events/${event.id}`}
                         >
                           View Details

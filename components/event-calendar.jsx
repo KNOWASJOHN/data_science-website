@@ -45,60 +45,14 @@ export function EventCalendar({ events }) {
 
   // Navigate to previous month
   const prevMonth = () => {
-    if (isSearchResults && searchResultMonths.size > 0) {
-      // Find the previous month with search results
-      const currentKey = `${currentYear}-${currentMonth}`
-      const prevKey = null
-      const prevEntry = null
-
-      // Convert the map to an array and sort it
-      const sortedMonths = Array.from(searchResultMonths.entries()).sort((a, b) => {
-        const [keyA, valueA] = a
-        const [keyB, valueB] = b
-        return valueA.year === valueB.year ? valueA.month - valueB.month : valueA.year - valueB.year
-      })
-
-      // Find the current month's index
-      const currentIndex = sortedMonths.findIndex(([key]) => key === currentKey)
-
-      if (currentIndex > 0) {
-        // Get the previous month with results
-        const [key, value] = sortedMonths[currentIndex - 1]
-        setCurrentDate(new Date(value.year, value.month, 1))
-      }
-    } else {
-      // Normal navigation
-      setCurrentDate(new Date(currentYear, currentMonth - 1, 1))
-    }
+    const newDate = new Date(currentYear, currentMonth - 1, 1)
+    setCurrentDate(newDate)
   }
 
   // Navigate to next month
   const nextMonth = () => {
-    if (isSearchResults && searchResultMonths.size > 0) {
-      // Find the next month with search results
-      const currentKey = `${currentYear}-${currentMonth}`
-      const nextKey = null
-      const nextEntry = null
-
-      // Convert the map to an array and sort it
-      const sortedMonths = Array.from(searchResultMonths.entries()).sort((a, b) => {
-        const [keyA, valueA] = a
-        const [keyB, valueB] = b
-        return valueA.year === valueB.year ? valueA.month - valueB.month : valueA.year - valueB.year
-      })
-
-      // Find the current month's index
-      const currentIndex = sortedMonths.findIndex(([key]) => key === currentKey)
-
-      if (currentIndex < sortedMonths.length - 1) {
-        // Get the next month with results
-        const [key, value] = sortedMonths[currentIndex + 1]
-        setCurrentDate(new Date(value.year, value.month, 1))
-      }
-    } else {
-      // Normal navigation
-      setCurrentDate(new Date(currentYear, currentMonth + 1, 1))
-    }
+    const newDate = new Date(currentYear, currentMonth + 1, 1)
+    setCurrentDate(newDate)
   }
 
   // Get days in month
@@ -155,64 +109,79 @@ export function EventCalendar({ events }) {
       days.push(
         <div
           key={`day-${day}`}
-          className={`relative h-24 border border-gray-200 overflow-hidden ${
-            isToday ? "border-cyan-200" : ""
-          }`}
-          style={{
-            background: dayEvents.length > 0 && dayEvents[0].image
-              ? `linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.4)), url(${dayEvents[0].image})`
-              : isToday ? "rgb(236 254 255)" : "white",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
+          className={`relative h-24 border border-gray-200 overflow-hidden ${isToday ? "border-cyan-200" : ""
+            }`}
         >
-          <div className="flex justify-between items-start p-1">
-            <span className={`text-base font-bold ${isToday ? "text-cyan-700" : "text-black"}`}>{day}</span>
-            {dayEvents.length > 0 && (
-              <Badge className="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 text-sm">{dayEvents.length}</Badge>
-            )}
-          </div>
+          {/* Add a separate div for the background image */}
+          {dayEvents.length > 0 && dayEvents[0].image && (
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                background: `linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(${dayEvents[0].image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'repeat',
+              }}
+            />
+          )}
 
-          <div className="mt-1 space-y-1 px-1">
-            {dayEvents.map((event) => (
-              <TooltipProvider key={event.id}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <div
-                      className={`relative text-sm truncate rounded cursor-pointer ${
-                        event.featured 
-                          ? "bg-cyan-600/90 text-white hover:bg-cyan-600" 
-                          : "bg-white/90 text-black hover:bg-white shadow-sm"
-                      }`}
-                      onClick={() => setSelectedEvent(event)}
-                    >
-                      <div className="px-1 py-0.5">
-                        {event.title}
-                      </div>
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="right" className="max-w-xs">
-                    <div>
-                      {event.image && (
-                        <div className="w-full h-24 rounded-t-md mb-2 overflow-hidden">
-                          <img 
-                            src={event.image} 
-                            alt={event.title}
-                            className="w-full h-full object-cover"
-                          />
+          {/* Add a background color div */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: isToday ? "rgb(236 254 255)" : "white",
+              zIndex: dayEvents.length > 0 && dayEvents[0].image ? -1 : 0
+            }}
+          />
+
+          {/* Content container with higher z-index */}
+          <div className="relative px-1">
+            <div className="flex justify-between items-start p-1 font-creato-thin text-xs">
+              <span className={`text-base font-bold ${isToday ? "text-cyan-700" : "text-black"}`}>{day}</span>
+              {dayEvents.length > 0 && (
+                <Badge className="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 text-sm">{dayEvents.length}</Badge>
+              )}
+            </div>
+
+            <div className="mt-1 space-y-1">
+              {dayEvents.map((event) => (
+                <TooltipProvider key={event.id}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div
+                        className={`relative text-sm truncate rounded cursor-pointer ${event.featured
+                            ? "bg-cyan-600 text-white hover:bg-green-400 hover:text-black/90 hover:font-semibold" 
+                            : "bg-white/90 text-black hover:bg-white shadow-sm"
+                          }`}
+                        onClick={() => setSelectedEvent(event)}
+                      >
+                        <div className="px-1 py-0.5 font-creato-thin text-base tracking-wide">
+                          {event.title}
                         </div>
-                      )}
-                      <h4 className="font-bold">{event.title}</h4>
-                      <p className="text-xl text-gray-100">
-                        {event.time} | {event.location}
-                      </p>
-                      <p className="text-xs mt-1">{event.description}</p>
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            ))}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="max-w-xs">
+                      <div>
+                        {event.image && (
+                          <div className="w-full h-24 rounded-t-md mb-2 overflow-hidden">
+                            <img
+                              src={event.image}
+                              alt={event.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        )}
+                        <h4 className="font-coolvetica text-slate-800 text-xl tracking-wide">{event.title}</h4>
+                        <p className="text-lg text-slate-800 font-creato-thin">
+                          {event.time} | {event.location}
+                        </p>
+                        <p className="text-md mt-1 font-coolvetica">{event.description}</p>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ))}
+            </div>
           </div>
         </div>,
       )
@@ -243,13 +212,13 @@ export function EventCalendar({ events }) {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 font-creato-bl">
           <CalendarIcon className="h-5 w-5 text-cyan-600" />
-          <h2 className="text-2xl font-bold text-slate-800">
+          <h2 className="text-2xl font-bold text-slate-800 font-creato-bl">
             {monthNames[currentMonth]} {currentYear}
           </h2>
           {isSearchResults && (
-            <Badge className="ml-2 bg-cyan-100 text-cyan-800">
+            <Badge className="ml-2 bg-cyan-200 text-cyan-800 font-eloquia-display tracking-wide text-sm hover:bg-cyan-800 hover:text-white">
               <Search className="h-3 w-3 mr-1" />
               Search Results
             </Badge>
@@ -296,9 +265,9 @@ export function EventCalendar({ events }) {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => setSelectedEvent(null)}
                 className="absolute top-2 right-2 text-white hover:bg-black/20"
               >
@@ -309,15 +278,15 @@ export function EventCalendar({ events }) {
           <CardContent className={`p-6 ${selectedEvent.image ? '-mt-16 relative' : ''}`}>
             <div className="flex justify-between items-start">
               <div>
-                <h3 className={`text-2xl font-bold mb-2 ${selectedEvent.image ? 'text-white' : 'text-slate-800'}`}>
+                <h3 className={`text-3xl font-bold mb-2 font-mirage ${selectedEvent.image ? 'text-white' : 'text-slate-800'}`}>
                   {selectedEvent.title}
                 </h3>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge className={selectedEvent.image ? 'bg-white/20 text-white' : 'bg-cyan-100 text-cyan-800'}>
+                  <Badge className={selectedEvent.image ? 'bg-slate-800 text-white tracking-wide font-eloquia-text text-sm' : 'bg-cyan-100 text-cyan-800'}>
                     {selectedEvent.category}
                   </Badge>
                   {selectedEvent.featured && (
-                    <Badge className={selectedEvent.image ? 'bg-amber-400/20 text-amber-100' : 'bg-amber-100 text-amber-800'}>
+                    <Badge className={selectedEvent.image ? 'bg-cyan-400/50 text-black-100 tracking-wide font-eloquia-text text-sm' : 'bg-cyan-500 text-black-800'}>
                       Featured
                     </Badge>
                   )}
@@ -332,9 +301,9 @@ export function EventCalendar({ events }) {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-slate-700 mb-2">Event Details</h4>
+                <h4 className="font-semibold text-slate-700 mb-2 font-creato-bl">Event Details</h4>
                 <div className="space-y-3 text-slate-600">
-                  <div className="flex items-start">
+                  <div className="flex items-start font-eloquia-text">
                     <CalendarIcon className="h-5 w-5 mr-2 text-cyan-600 mt-0.5" />
                     <div>
                       <div>
@@ -358,7 +327,7 @@ export function EventCalendar({ events }) {
                       )}
                     </div>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center font-eloquia-text">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -376,7 +345,7 @@ export function EventCalendar({ events }) {
                     </svg>
                     <span>{selectedEvent.time}</span>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center font-eloquia-text">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -394,7 +363,7 @@ export function EventCalendar({ events }) {
                     </svg>
                     <span>{selectedEvent.location}</span>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center font-eloquia-text">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -418,11 +387,11 @@ export function EventCalendar({ events }) {
               </div>
 
               <div>
-                <h4 className="font-semibold text-slate-700 mb-2">Description</h4>
-                <p className="text-slate-600">{selectedEvent.description}</p>
+                <h4 className="font-semibold text-slate-700 mb-2 font-creato-bl">Description</h4>
+                <p className="text-slate-600 font-eloquia-text">{selectedEvent.description}</p>
 
                 <div className="mt-6">
-                  <Button className="bg-cyan-600 hover:bg-cyan-700">Register for Event</Button>
+                  <Button className="bg-cyan-600 hover:bg-cyan-700 font-creato-thin text-lg">Register for Event</Button>
                 </div>
               </div>
             </div>
@@ -434,11 +403,11 @@ export function EventCalendar({ events }) {
       <div className="flex items-center justify-end space-x-4 text-sm">
         <div className="flex items-center">
           <div className="w-3 h-3 bg-cyan-600 rounded-sm mr-1"></div>
-          <span className="text-slate-600">Featured Event</span>
+          <span className="text-slate-800 font-creato-thin">Featured Event</span>
         </div>
         <div className="flex items-center">
           <div className="w-3 h-3 bg-slate-100 border border-slate-200 rounded-sm mr-1"></div>
-          <span className="text-slate-600">Regular Event</span>
+          <span className="text-slate-800 font-creato-thin ">Regular Event</span>
         </div>
       </div>
     </div>

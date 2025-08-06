@@ -139,7 +139,7 @@ export default function EventsHomePage() {
                 </div>
 
                 <div className="pt-4 mt-auto">
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700">
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 font-creato-bl tracking-wide">
                     View Details
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -151,7 +151,7 @@ export default function EventsHomePage() {
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700">
+          <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700 font-coolvetica">
             View All Events
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

@@ -138,7 +138,7 @@ export default function HackathonsPage() {
         <Header />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
-            <p className="text-xl text-slate-600">Loading hackathons...</p>
+            <p className="text-xl text-slate-600 font-coolvetica">Loading hackathons...</p>
           </div>
         </div>
         <Footer />
@@ -152,7 +152,7 @@ export default function HackathonsPage() {
         <Header />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
-            <p className="text-xl text-red-600 mb-2">Error loading hackathons</p>
+            <p className="text-xl text-red-600 mb-2 font-coolvetica">Error loading hackathons</p>
             <p className="text-slate-600">{error}</p>
           </div>
         </div>
@@ -182,8 +182,8 @@ export default function HackathonsPage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Hackathons</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Hackathons</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">
             Join our exciting hackathons and coding challenges to showcase your skills and build innovative solutions
           </p>
         </div>
@@ -200,8 +200,8 @@ export default function HackathonsPage() {
               { value: "50+", label: "Industry Partners" }
             ].map((stat, index) => (
               <div key={`stat-${index}`} className="text-center">
-                <div className="text-3xl font-bold text-cyan-600 mb-2">{stat.value}</div>
-                <div className="text-slate-600">{stat.label}</div>
+                <div className="text-3xl font-bold text-cyan-600 mb-2 font-stretch">{stat.value}</div>
+                <div className="text-slate-600 font-creato-bl">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -212,8 +212,8 @@ export default function HackathonsPage() {
       <div className="container mx-auto px-4 py-16">
         {/* Ongoing Hackathons */}
         <section className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-slate-800">Ongoing Hackathons</h2>
+          <div className="flex items-center justify-between mb-8 font-creato-thin tracking-wider">
+            <h2 className="text-3xl font-bold text-slate-800 font-mirage">Ongoing Hackathons</h2>
             <Badge className="bg-yellow-100 text-yellow-800 px-3 py-1">
               <Zap className="h-4 w-4 mr-1" />
               In Progress
@@ -229,56 +229,56 @@ export default function HackathonsPage() {
               >
                 <div className="relative h-48">
                   <ImageCarousel images={hackathon.images} alt={hackathon.title} className="h-full" />
-                  <div className="absolute top-3 right-3">
-                    <Badge className="bg-yellow-100 text-yellow-800">
+                  <div className="absolute bottom-3 left-3 font-creato-thin text-sm">
+                    <Badge className="bg-yellow-100 text-yellow-800 ">
                       Ongoing
                     </Badge>
                   </div>
                   {hackathon.featured && (
                     <div className="absolute top-3 left-3">
-                      <Badge className="bg-cyan-600 hover:bg-cyan-700">Featured</Badge>
+                      <Badge className="bg-cyan-600 hover:bg-cyan-700 font-creato-thin text-sm">Featured</Badge>
                     </div>
                   )}
                 </div>
 
                 <CardHeader>
-                  <CardTitle className="text-xl text-slate-800 line-clamp-2">{hackathon.title}</CardTitle>
+                  <CardTitle className="text-2xl text-slate-800 line-clamp-2 font-coolvetica">{hackathon.title}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">Start: {formatDate(hackathon.startDate)}</span>
+                      <span className="text-sm font-creato-thin">Start: {formatDate(hackathon.startDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">End: {formatDate(hackathon.endDate)}</span>
+                      <span className="text-sm font-creato-thin">End: {formatDate(hackathon.endDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Clock className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.time}</span>
+                      <span className="text-sm font-creato-thin">{hackathon.time}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <MapPin className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.location}</span>
+                      <span className="text-sm font-creato-thin">{hackathon.location}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Users className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.participants} participants</span>
+                      <span className="text-sm font-creato-thin">{hackathon.participants} participants</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Trophy className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">Prize Pool: {hackathon.prizes}</span>
+                      <span className="text-sm font-creato-thin">Prize Pool: {hackathon.prizes}</span>
                     </div>
                   </div>
 
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-3">{hackathon.description}</p>
+                  <p className="text-slate-600 text-sm mb-4 line-clamp-3 font-eloquia-text">{hackathon.description}</p>
 
                   {hackathon.sponsors && hackathon.sponsors.length > 0 && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
-                      <div className="flex flex-wrap gap-1">
+                      <h4 className="text-sm font-semibold text-slate-700 mb-2 font-eloquia-text">Sponsors:</h4>
+                      <div className="flex flex-wrap font-creato-thin tracking-wide gap-1">
                         {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
                           <Badge key={idx} variant="outline" className="text-xs flex items-center">
                             {sponsor.logo && (
@@ -300,7 +300,7 @@ export default function HackathonsPage() {
                     </div>
                   )}
 
-                  <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white">
+                  <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-creato-bl">
                     View Live Updates
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -317,8 +317,8 @@ export default function HackathonsPage() {
 
         {/* Upcoming Hackathons */}
         <section className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-slate-800">Upcoming Hackathons</h2>
+          <div className="flex items-center justify-between mb-8 font-creato-thin tracking-wider">
+            <h2 className="text-3xl font-bold text-slate-800 font-mirage">Upcoming Hackathons</h2>
             <Badge className="bg-green-100 text-green-800 px-3 py-1">
               <Zap className="h-4 w-4 mr-1" />
               Register Now
@@ -334,58 +334,58 @@ export default function HackathonsPage() {
               >
                 <div className="relative h-48">
                   <ImageCarousel images={hackathon.images} alt={hackathon.title} className="h-full" />
-                  <div className="absolute top-3 right-3">
+                  <div className="absolute top-3 left-3   font-creato-thin text-sm">
                     <Badge className={getStatusColor(hackathon.status)}>
                       {hackathon.status === "upcoming" ? "Upcoming" : "Completed"}
                     </Badge>
                   </div>
                   {hackathon.featured && (
-                    <div className="absolute top-3 left-3">
+                    <div className="absolute bottom-3 left-3 font-creato-thin text-sm">
                       <Badge className="bg-cyan-600 hover:bg-cyan-700">Featured</Badge>
                     </div>
                   )}
                 </div>
 
                 <CardHeader>
-                  <CardTitle className="text-xl text-slate-800 line-clamp-2 ">{hackathon.title}</CardTitle>
+                  <CardTitle className="text-2xl text-slate-800 line-clamp-2 font-creato-bl">{hackathon.title}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">Start: {formatDate(hackathon.startDate)}</span>
+                      <span className="text-sm font-creato-thin">Start: {formatDate(hackathon.startDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">End: {formatDate(hackathon.endDate)}</span>
+                      <span className="text-sm font-creato-thin">End: {formatDate(hackathon.endDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Clock className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.time}</span>
+                      <span className="text-sm font-creato-thin">{hackathon.time}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <MapPin className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.location}</span>
+                      <span className="text-sm font-creato-thin">{hackathon.location}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Users className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.participants} participants expected</span>
+                      <span className="text-sm font-creato-thin">{hackathon.participants} participants expected</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Trophy className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">Prize Pool: {hackathon.prizes}</span>
+                      <span className="text-sm font-creato-thin">Prize Pool: {hackathon.prizes}</span>
                     </div>
                   </div>
 
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-3">{hackathon.description}</p>
+                  <p className="text-slate-600 text-sm mb-4 line-clamp-3 font-eloquia-text">{hackathon.description}</p>
 
                   {hackathon.sponsors && hackathon.sponsors.length > 0 && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
+                      <h4 className="text-sm font-semibold text-slate-700 mb-2 font-eloquia-text">Sponsors:</h4>
                       <div className="flex flex-wrap gap-1">
                         {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs flex items-center">
+                          <Badge key={idx} variant="outline" className=" font-creato-thin tracking-wide text-xs flex items-center">
                             {sponsor.logo && (
                               <img 
                                 src={sponsor.logo} 
@@ -406,8 +406,8 @@ export default function HackathonsPage() {
                   )}
 
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-slate-700 mb-2">Themes:</h4>
-                    <div className="flex flex-wrap gap-1">
+                    <h4 className="text-sm font-semibold text-slate-700 mb-2 font-eloquia-text">Themes:</h4>
+                    <div className="flex flex-wrap gap-1 font-creato-thin tracking-wide">
                       {hackathon.themes.slice(0, 3).map((theme, idx) => (
                         <Badge key={idx} variant="outline" className="text-xs">
                           {theme}
@@ -421,7 +421,7 @@ export default function HackathonsPage() {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700">
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 font-creato-bl">
                     Register Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -433,8 +433,8 @@ export default function HackathonsPage() {
 
         {/* Past Hackathons */}
         <section>
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-slate-800">Past Hackathons</h2>
+          <div className="flex items-center justify-between mb-8 font-creato-thin tracking-wider">
+            <h2 className="text-3xl font-bold text-slate-800 font-mirage">Past Hackathons</h2>
             <Badge className="bg-blue-100 text-blue-800 px-3 py-1">
               <Trophy className="h-4 w-4 mr-1" />
               Success Stories
@@ -450,46 +450,46 @@ export default function HackathonsPage() {
               >
                 <div className="relative h-48">
                   <ImageCarousel images={hackathon.images} alt={hackathon.title} className="h-full" />
-                  <div className="absolute top-3 right-3">
+                  <div className="absolute bottom-3 left-3 font-creato-thin text-sm">
                     <Badge className={getStatusColor(hackathon.status)}>Completed</Badge>
                   </div>
                   {hackathon.featured && (
-                    <div className="absolute top-3 left-3">
+                    <div className="absolute top-3 left-3 font-creato-thin text-sm">
                       <Badge className="bg-amber-600 hover:bg-amber-700">Flagship Event</Badge>
                     </div>
                   )}
                 </div>
 
                 <CardHeader>
-                  <CardTitle className="text-xl text-slate-800 line-clamp-2 ">{hackathon.title}</CardTitle>
+                  <CardTitle className="text-2xl text-slate-800 line-clamp-2 font-creato-bl">{hackathon.title}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">Start: {formatDate(hackathon.startDate)}</span>
+                      <span className="text-sm font-creato-thin">Start: {formatDate(hackathon.startDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">End: {formatDate(hackathon.endDate)}</span>
+                      <span className="text-sm font-creato-thin">End: {formatDate(hackathon.endDate)}</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Users className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">{hackathon.participants} participants</span>
+                      <span className="text-sm font-creato-thin">{hackathon.participants} participants</span>
                     </div>
                     <div className="flex items-center text-slate-600">
                       <Trophy className="h-4 w-4 mr-2 text-cyan-600" />
-                      <span className="text-sm">Prize Pool: {hackathon.prizes}</span>
+                      <span className="text-sm font-creato-thin">Prize Pool: {hackathon.prizes}</span>
                     </div>
                   </div>
 
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-3">{hackathon.description}</p>
+                  <p className="text-slate-600 text-sm mb-4 line-clamp-3 font-eloquia-text">{hackathon.description}</p>
 
                   {hackathon.sponsors && hackathon.sponsors.length > 0 && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-slate-700 mb-2">Sponsors:</h4>
-                      <div className="flex flex-wrap gap-1">
+                      <h4 className="text-sm font-semibold text-slate-700 mb-2 font-eloquia-text">Sponsors:</h4>
+                      <div className="flex flex-wrap gap-1 font-creato-thin tracking-wide">
                         {hackathon.sponsors.slice(0, 3).map((sponsor, idx) => (
                           <Badge key={idx} variant="outline" className="text-xs flex items-center">
                             {sponsor.logo && (
@@ -513,12 +513,12 @@ export default function HackathonsPage() {
 
                   {hackathon.winner && (
                     <div className="mb-4 p-3 bg-amber-50 rounded-lg border border-amber-200">
-                      <h4 className="text-sm font-semibold text-amber-800 mb-1">🏆 Winner:</h4>
-                      <p className="text-sm text-amber-700 " >{hackathon.winner}</p>
+                      <h4 className="text-sm font-semibold text-amber-800 mb-1 font-creato-bl">🏆 Winner:</h4>
+                      <p className="text-sm text-amber-700 font-creato-thin" >{hackathon.winner}</p>
                     </div>
                   )}
 
-                  <Button variant="outline" className="w-full bg-transparent">
+                  <Button variant="outline" className="w-full bg-transparent font-creato-bl">
                     View Results
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -530,39 +530,39 @@ export default function HackathonsPage() {
 
         {/* Why Participate Section */}
         <section className="mt-16">
-          <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Why Participate in Our Hackathons?</h2>
+          <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center font-mirage">Why Participate in Our Hackathons?</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Code className="h-6 w-6 text-cyan-600" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-800 mb-2">Skill Development</h3>
-              <p className="text-slate-600 text-sm">Enhance your coding, problem-solving, and teamwork skills</p>
+              <h3 className="text-lg font-semibold text-slate-800 mb-2 font-creato-bl">Skill Development</h3>
+              <p className="text-slate-600 text-sm font-creato-thin">Enhance your coding, problem-solving, and teamwork skills</p>
             </Card>
 
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-6 w-6 text-cyan-600" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-800 mb-2">Networking</h3>
-              <p className="text-slate-600 text-sm">Connect with industry experts, mentors, and like-minded peers</p>
+              <h3 className="text-lg font-semibold text-slate-800 mb-2 font-creato-bl">Networking</h3>
+              <p className="text-slate-600 text-sm font-creato-thin">Connect with industry experts, mentors, and like-minded peers</p>
             </Card>
 
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Trophy className="h-6 w-6 text-cyan-600" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-800 mb-2">Win Prizes</h3>
-              <p className="text-slate-600 text-sm">Compete for substantial cash prizes and recognition</p>
+              <h3 className="text-lg font-semibold text-slate-800 mb-2 font-creato-bl">Win Prizes</h3>
+              <p className="text-slate-600 text-sm font-creato-thin">Compete for substantial cash prizes and recognition</p>
             </Card>
 
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="h-6 w-6 text-cyan-600" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-800 mb-2">Innovation</h3>
-              <p className="text-slate-600 text-sm">Work on cutting-edge technologies and real-world problems</p>
+              <h3 className="text-lg font-semibold text-slate-800 mb-2 font-creato-bl">Innovation</h3>
+              <p className="text-slate-600 text-sm font-creato-thin">Work on cutting-edge technologies and real-world problems</p>
             </Card>
           </div>
         </section>
