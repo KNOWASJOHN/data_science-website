@@ -1,7 +1,7 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Trophy, Award, Star, Medal } from "lucide-react"
+import { Trophy, Award, BookOpen, Star, Users, Briefcase, Laptop, Globe, FileText, Bookmark,Medal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ImageCarousel } from "@/components/image-carousel"
 import { useEffect, useState } from "react"
@@ -84,29 +84,15 @@ export function AchievementsGlimpse() {
     Award: <Award className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
     Trophy: <Trophy className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
     Star: <Star className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
-    Medal: <Medal className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />
-  }
-
-  // Category colors
-  const categoryColors = {
-    // Student categories
-    "Competition": "bg-amber-100 text-amber-800",
-    "Research": "bg-cyan-100 text-cyan-800",
-    "Recognition": "bg-blue-100 text-blue-800",
-    "Award": "bg-green-100 text-green-800",
-    "Placement": "bg-purple-100 text-purple-800",
-    "Scholarship": "bg-pink-100 text-pink-800",
-    // Faculty categories
-    "Research Grant": "bg-cyan-100 text-cyan-800",
-    "Patent": "bg-green-100 text-green-800",
-    "Collaboration": "bg-purple-100 text-purple-800",
-    // Department categories
-    "Department Excellence": "bg-amber-100 text-amber-800",
-    "Research Excellence": "bg-cyan-100 text-cyan-800",
-    "Industry Connect": "bg-blue-100 text-blue-800",
-    "Innovation": "bg-purple-100 text-purple-800",
-    "Academic Excellence": "bg-green-100 text-green-800"
-  }
+    Medal: <Medal className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    BookOpen: <BookOpen className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Users: <Users className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Briefcase: <Briefcase className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Laptop: <Laptop className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Globe: <Globe className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    FileText: <FileText className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Bookmark: <Bookmark className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+  };
 
   return (
     <section className="py-16 bg-white">
@@ -139,7 +125,7 @@ export function AchievementsGlimpse() {
 
               <CardContent className="p-3 text-center">
                 <div className="flex-shrink-0 absolute right-4 bottom-13 grid">
-                  {achievement.icon ? iconMap[achievement.icon] : <Award className="h-8 w-8 text-cyan-500" />}
+                  {iconMap[achievement.icon]}
                 </div>
                 <div className="flex items-center justify-center mb-4 gap-3">
                   <div>
