@@ -12,13 +12,31 @@ import { ref, onValue } from "firebase/database"
 export default function DepartmentAwardsPage() {
   const [awards, setAwards] = useState([])
 
-  // Icon mapping
-  const iconMap = {
-    Trophy: <Trophy className="h-12 w-12 text-amber-500" />,
-    Award: <Award className="h-12 w-12 text-cyan-600" />,
-    Medal: <Medal className="h-12 w-12 text-blue-600" />,
-    Star: <Star className="h-12 w-12 text-purple-600" />
-  }
+const badgeColors = [
+  "bg-amber-100 text-amber-800",
+  "bg-cyan-100 text-cyan-800",
+  "bg-blue-100 text-blue-800",
+  "bg-green-100 text-green-800",
+  "bg-purple-100 text-purple-800",
+  "bg-pink-100 text-pink-800"
+];
+
+const iconColors = [
+  "text-amber-500",
+  "text-cyan-600",
+  "text-blue-600",
+  "text-green-600",
+  "text-purple-600",
+  "text-pink-600"
+];
+
+// Update the iconMap to use random colors
+const iconMap = {
+  Award: <Award className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+  Trophy: <Trophy className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+  Star: <Star className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+  Medal: <Medal className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />
+};
 
   useEffect(() => {
     const achievementsRef = ref(database, "achievements/department")
@@ -49,15 +67,6 @@ export default function DepartmentAwardsPage() {
       onValue(achievementsRef, () => {})
     }
   }, [])
-  // Category colors
-
-  const categoryColors = {
-    "Department Excellence": "bg-amber-100 text-amber-800",
-    "Research Excellence": "bg-cyan-100 text-cyan-800",
-    "Industry Connect": "bg-blue-100 text-blue-800",
-    "Innovation": "bg-purple-100 text-purple-800",
-    "Academic Excellence": "bg-green-100 text-green-800",
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -85,7 +94,7 @@ export default function DepartmentAwardsPage() {
               <div className="relative h-48 bg-slate-100 overflow-hidden">
                 <ImageCarousel images={award.images} alt={award.title} className="h-full" />
                 <div className="absolute top-1 left-2 font-coolvetica tracking-wide">
-                  <Badge className={categoryColors[award.category] || "bg-slate-100 text-slate-800"}>
+                  <Badge className={badgeColors[Math.floor(Math.random() * badgeColors.length)]}>
                     {award.category}
                   </Badge>
                 </div>

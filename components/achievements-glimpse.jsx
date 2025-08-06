@@ -60,11 +60,31 @@ export function AchievementsGlimpse() {
       })
     }
   }, [])
+
+  const badgeColors = [
+    "bg-amber-100 text-amber-800",
+    "bg-cyan-100 text-cyan-800",
+    "bg-blue-100 text-blue-800",
+    "bg-green-100 text-green-800",
+    "bg-purple-100 text-purple-800",
+    "bg-pink-100 text-pink-800"
+  ];
+
+  const iconColors = [
+    "text-amber-500",
+    "text-cyan-600",
+    "text-blue-600",
+    "text-green-600",
+    "text-purple-600",
+    "text-pink-600"
+  ];
+
+  // Update the iconMap to use random colors
   const iconMap = {
-    Award: <Award className="h-8 w-8 text-cyan-500" />,
-    Trophy: <Trophy className="h-8 w-8 text-amber-500" />,
-    Star: <Star className="h-8 w-8 text-amber-500" />,
-    Medal: <Medal className="h-8 w-8 text-blue-500" />
+    Award: <Award className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Trophy: <Trophy className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Star: <Star className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Medal: <Medal className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />
   }
 
   // Category colors
@@ -111,7 +131,7 @@ export function AchievementsGlimpse() {
               <div className="relative h-48 bg-slate-100 overflow-hidden font-coolvetica tracking-wide">
                 <ImageCarousel images={achievement.images || []} alt={achievement.title} className="h-full" style={{ objectFit: 'contain', objectPosition: 'center' }} />
                 <div className="absolute top-1 left-2">
-                  <Badge className={categoryColors[achievement.category] || "bg-slate-100 text-slate-800"}>
+                  <Badge className={badgeColors[Math.floor(Math.random() * badgeColors.length)]}>
                     {achievement.category}
                   </Badge>
                 </div>

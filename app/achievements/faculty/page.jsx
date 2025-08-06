@@ -3,20 +3,45 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Award, BookOpen, Globe, Users, FileText, Bookmark } from "lucide-react"
+import { Trophy, Award, BookOpen, Star, Users, Briefcase, Laptop, Globe, FileText, Bookmark,Medal } from "lucide-react"
 import { ImageCarousel } from "@/components/image-carousel"
 import { database } from "@/app/database/firebaseConfig"
 import { ref, onValue } from "firebase/database"
 import { useEffect, useState } from "react"
 
-const iconMap = {
-  Award: <Award className="h-8 w-8 text-cyan-600" />,
-  BookOpen: <BookOpen className="h-8 w-8 text-cyan-600" />,
-  Globe: <Globe className="h-8 w-8 text-cyan-600" />,
-  Users: <Users className="h-8 w-8 text-cyan-600" />,
-  FileText: <FileText className="h-8 w-8 text-cyan-600" />,
-  Bookmark: <Bookmark className="h-8 w-8 text-cyan-600" />,
-}
+
+  const badgeColors = [
+    "bg-amber-100 text-amber-800",
+    "bg-cyan-100 text-cyan-800",
+    "bg-blue-100 text-blue-800",
+    "bg-green-100 text-green-800",
+    "bg-purple-100 text-purple-800",
+    "bg-pink-100 text-pink-800"
+  ];
+
+  const iconColors = [
+    "text-amber-500",
+    "text-cyan-600",
+    "text-blue-600",
+    "text-green-600",
+    "text-purple-600",
+    "text-pink-600"
+  ];
+
+  // Update the iconMap to use random colors
+  const iconMap = {
+    Award: <Award className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Trophy: <Trophy className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Star: <Star className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Medal: <Medal className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    BookOpen: <BookOpen className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`} />,
+    Users: <Users className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Briefcase: <Briefcase className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Laptop: <Laptop className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Globe: <Globe className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    FileText: <FileText className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+    Bookmark: <Bookmark className={`h-8 w-8 ${iconColors[Math.floor(Math.random() * iconColors.length)]}`}/>,
+  };
 
 export default function FacultyAchievementsPage() {
   const [achievements, setAchievements] = useState([])
@@ -64,7 +89,7 @@ export default function FacultyAchievementsPage() {
       description: achievement.description || "",
       date: achievement.date || "",
       category: achievement.category || "Uncategorized",
-      icon: achievement.icon ? iconMap[achievement.icon] : <Award className="h-8 w-8 text-cyan-600" />,
+      icon: achievement.icon ? iconMap[achievement.icon] : <Award className="h-8 w-8" />,
       images: Array.isArray(achievement.images) ? achievement.images : [],
     }
   }
@@ -121,7 +146,7 @@ export default function FacultyAchievementsPage() {
               <div className="relative h-48 bg-slate-100 overflow-hidden font-coolvetica tracking-wide">
                 <ImageCarousel images={Array.isArray(achievement.images) ? achievement.images : []} alt={achievement.faculty} className="h-full" style={{ objectFit: 'contain', objectPosition: 'center' }} />
                 <div className="absolute top-1 left-3">
-                  <Badge className={categoryColors[achievement.category] || "bg-slate-100 text-slate-800"}>
+                  <Badge className={badgeColors[Math.floor(Math.random() * badgeColors.length)]}>
                     {achievement.category}
                   </Badge>
                 </div>
