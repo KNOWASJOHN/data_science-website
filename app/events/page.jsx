@@ -20,14 +20,14 @@ export default function EventsHomePage() {
 
   const [featuredEvents, setFeaturedEvents] = useState([]);
 
-  const categoryColors = {
-    Workshop: "bg-blue-100 text-blue-800",
-    Conference: "bg-cyan-100 text-cyan-800",
-    Hackathon: "bg-red-100 text-red-800",
-    "Guest Lecture": "bg-green-100 text-green-800",
-    Festival: "bg-orange-100 text-orange-800",
-    Networking: "bg-purple-100 text-purple-800"
-  };
+  const badgeColors = [
+    "bg-amber-100 text-amber-800",
+    "bg-cyan-100 text-cyan-800",
+    "bg-blue-100 text-blue-800",
+    "bg-green-100 text-green-800",
+    "bg-purple-100 text-purple-800",
+    "bg-pink-100 text-pink-800"
+  ];
 
   useEffect(() => {
     const eventsRef = ref(database, "featuredevents");
@@ -59,8 +59,8 @@ export default function EventsHomePage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Events</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Events</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">
             Discover upcoming events, workshops, conferences, and activities at the Department of Data Science
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function EventsHomePage() {
 
       {/* Event Categories */}
       <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Event Categories</h2>
+        <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center font-mirage">Event Categories</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {eventCategories.map((category, index) => (
             <Card
@@ -76,11 +76,11 @@ export default function EventsHomePage() {
               className="hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer animate-slide-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-6 text-center font-creato-thin">
                 <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-2">{category.name}</h3>
-                <p className="text-slate-600 text-sm mb-4">{category.description}</p>
-                <Badge className={category.color}>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2 font-creato-bl tracking-wide">{category.name}</h3>
+                <p className="text-slate-800 text-sm mb-4  tracking-wide font-coolvetica text-lg">{category.description}</p>
+                <Badge className={badgeColors[Math.floor(Math.random() * badgeColors.length)]}>
                   {typeof category.count === "number" ? `${category.count} Events` : category.count}
                 </Badge>
               </CardContent>
@@ -89,7 +89,7 @@ export default function EventsHomePage() {
         </div>
 
         {/* Featured Events */}
-        <h2 className="text-3xl font-bold text-slate-800 mb-8">Featured Events</h2>
+        <h2 className="text-3xl font-bold text-slate-800 mb-8 font-mirage">Featured Events</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredEvents.map((evt, index) => (
             <Card
@@ -100,23 +100,24 @@ export default function EventsHomePage() {
               <div className="relative h-48">
                 <ImageCarousel images={evt.images || ["/placeholder.svg?height=300&width=600"]} alt={evt.title} className="h-full" />
                 <div className="absolute top-3 right-3">
-                  <Badge className={categoryColors[evt.category] || "bg-slate-100 text-slate-800"}>
+                  <Badge className={badgeColors[Math.floor(Math.random() * badgeColors.length)]}>
                     {evt.category}
                   </Badge>
                 </div>
                 {evt.featured && (
                   <div className="absolute top-3 left-3">
-                    <Badge className="bg-cyan-600 hover:bg-cyan-700">Featured</Badge>
+                    <Badge className={badgeColors[Math.floor(Math.random() * badgeColors.length)]}>
+                      Featured</Badge>
                   </div>
                 )}
               </div>
 
               <CardContent className="p-6 min-h-[24rem] flex flex-col">
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-slate-800 mb-3 line-clamp-2">{evt.title}</h3>
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3 line-clamp-2 font-coolvetica">{evt.title}</h3>
 
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-slate-600">
+                  <div className="space-y-2 mb-4 font-dot-matrix tracking-wide text-slate-800">
+                    <div className="flex items-center text-slate-600 ">
                       <Calendar className="h-4 w-4 mr-2 text-cyan-600" />
                       <span className="text-sm">{evt.date}</span>
                     </div>
@@ -134,7 +135,7 @@ export default function EventsHomePage() {
                     </div>
                   </div>
 
-                  <p className="text-slate-600 text-sm line-clamp-3">{evt.description}</p>
+                  <p className="text-slate-800 text-sm line-clamp-3 font-eloquia-text  font-normal">{evt.description}</p>
                 </div>
 
                 <div className="pt-4 mt-auto">
