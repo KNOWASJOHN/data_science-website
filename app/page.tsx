@@ -5,8 +5,8 @@ import { ProgramsSection } from "@/components/programs-section"
 import { AchievementsGlimpse } from "@/components/achievements-glimpse"
 import { EventsGlimpse } from "@/components/events-glimpse"
 import { FacultySection } from "@/components/faculty-section"
-import { NewsSection } from "@/components/news-section"
 import { Footer } from "@/components/footer"
+import {NewsSection} from "@/components/news-section"
 
 export default function HomePage() {
   return (
@@ -31,7 +31,7 @@ export default function HomePage() {
         <FacultySection />
       </div>
       <div className="animate-slide-up animation-delay-700">
-        <NewsSection />
+        <NewsSection/>
       </div>
       <Footer />
     </div>
