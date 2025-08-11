@@ -7,7 +7,6 @@ import { Calendar, ArrowRight } from "lucide-react"
 
 export function NewsSection() {
   const [news, setNews] = useState([])
-  const API_KEY = process.env.NEXT_PUBLIC_GNEWS_API_KEY  // Updated variable name
 
   // Deduplication function
   function removeDuplicates(articles) {
@@ -24,18 +23,31 @@ export function NewsSection() {
     async function fetchNews() {
       try {
         const query = encodeURIComponent(
-          "(artificial intelligence OR AI OR machine learning OR deep learning OR computer science)"
+        `"artificial intelligence" OR AI OR "machine learning" OR "deep learning" OR "data science" OR "computer vision"`
         )
 
-        const res = await fetch(
-          `https://gnews.io/api/v4/search?q=${query}&lang=en&max=20&apikey=${process.env.NEXT_PUBLIC_GNEWS_API_KEY}`)
+      const today = new Date();
+      const sevenDaysAgo = new Date(today);
+      sevenDaysAgo.setDate(today.getDate() - 7);
+      const fromDate = sevenDaysAgo.toISOString().split("T")[0];
+
+      const res = await fetch(
+        `https://newsapi.org/v2/everything?q=${query}&language=en&from=${fromDate}&sortBy=popularity&pageSize=12&apiKey=${process.env.NEXT_PUBLIC_NEWSAPI_KEY}`       )
+
         const data = await res.json()
-        const uniqueArticles = removeDuplicates(data.articles || [])
-        setNews(uniqueArticles.slice(0, 6)) // Limit to 6 after filtering
+
+        if (data.articles) {
+
+          const uniqueArticles = removeDuplicates(data.articles)
+          setNews(uniqueArticles.slice(0, 6))
+        } else {
+          console.error("NewsAPI error:", data)
+        }
       } catch (err) {
         console.error("Error fetching news:", err)
       }
     }
+
     fetchNews()
   }, [])
 
@@ -57,13 +69,13 @@ export function NewsSection() {
               <Card key={index} className="hover:shadow-xl transition-shadow duration-300 overflow-hidden">
                 <div className="aspect-video bg-gray-200 relative overflow-hidden">
                   <img
-                    src={item.image || "/placeholder.svg"}
+                    src={item.urlToImage || "/placeholder.svg"}
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <CardHeader>
-                  <div className="flex items-center text-sm text-gray-500 mb-2 font-dot-matrix">
+                  <div className="flex items-center text-md text-gray-500 mb-2 font-dot-matrix">
                     <Calendar className="h-5 w-4 mr-3 " />
                     {new Date(item.publishedAt).toLocaleDateString()}
                   </div>
@@ -72,7 +84,7 @@ export function NewsSection() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-md text-gray-600 mb-4 text-left font-eloqcuia-text tracking-tight">
+                  <p className="text-md text-gray-600 mb-4 text-left font-eloquia-text tracking-tight">
                     {item.description || "No description available."}
                   </p>
                   <Button

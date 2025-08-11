@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAKZZy_fodfRp9f7dnocBOWdJL-dHNpXaw",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "ds-website-db.firebaseapp.com",
   databaseURL: "https://ds-website-db-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "ds-website-db",
