@@ -133,7 +133,12 @@ export function NewsSection() {
                 <CardHeader>
                   <div className="flex items-center text-md text-gray-500 mb-2 font-dot-matrix">
                     <Calendar className="h-5 w-4 mr-3" />
-                    {item.pubDate ? new Date(item.pubDate).toLocaleDateString() : "Unknown date"}
+                    {item.pubDate ? new Date(item.pubDate).toLocaleString('en-US', {
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    }) : "Unknown date"}
                   </div>
                   <CardTitle className="text-xl text-slate-800 leading-tight tracking-wide font-creato-thin">
                     {item.title}
