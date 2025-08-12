@@ -60,8 +60,8 @@ export default function AcademicCalendarPage() {
       {/* Page Header */}
       <div className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Academic Calendar</h1>
-          <p className="text-xl text-gray-300 max-w-3xl">Academic calendar for the year {academicYear}</p>
+          <h1 className="text-4xl font-bold mb-4 font-mirage">Academic Calendar</h1>
+          <p className="text-xl text-gray-300 max-w-3xl font-creato-thin">Academic calendar for the year {academicYear}</p>
         </div>
       </div>
 
@@ -69,13 +69,13 @@ export default function AcademicCalendarPage() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-800">Academic Year {academicYear}</h2>
+            <h2 className="text-3xl font-bold text-slate-800 font-eloquia-text">Academic Year {academicYear}</h2>
             <div className="flex space-x-2">
-              <Button variant="outline" className="flex items-center">
+              <Button variant="outline" className="flex items-center font-coolvetica tracking-wide">
                 <Printer className="mr-2 h-4 w-4" />
                 Print
               </Button>
-              <Button className="bg-cyan-600 hover:bg-cyan-700 flex items-center">
+              <Button className="bg-cyan-600 hover:bg-cyan-700 flex items-center font-coolvetica tracking-wide">
                 <Download className="mr-2 h-4 w-4" />
                 Download PDF
               </Button>
@@ -83,7 +83,7 @@ export default function AcademicCalendarPage() {
           </div>
 
           {/* Legend */}
-          <div className="flex flex-wrap gap-3 mb-8">
+          <div className="flex flex-wrap gap-3 mb-8 font-coolvetica tracking-wide">
             {Object.entries(categoryColors).map(([category, colorClass]) => (
               <Badge key={category} className={colorClass}>
                 {category}
@@ -95,7 +95,7 @@ export default function AcademicCalendarPage() {
           <div className="space-y-12">
             {semesters.map((semester, index) => (
               <div key={index}>
-                <h3 className="text-2xl font-semibold text-slate-800 mb-6 pb-2 border-b border-slate-200">
+                <h3 className="text-2xl font-semibold text-slate-800 mb-6 pb-2 border-b border-slate-200 font-creato-bl">
                   {semester.name}
                 </h3>
 
@@ -115,9 +115,9 @@ export default function AcademicCalendarPage() {
                             key={eventIndex}
                             className={`border-b border-slate-100 ${eventIndex % 2 === 0 ? "bg-white" : "bg-slate-50"}`}
                           >
-                            <td className="py-3 px-6 text-slate-800 font-medium">{event.date}</td>
-                            <td className="py-3 px-6 text-slate-700">{event.event}</td>
-                            <td className="py-3 px-6">
+                            <td className="py-3 px-6 text-slate-800 font-medium font-creato-bl">{event.date}</td>
+                            <td className="py-3 px-6 text-slate-700 font-coolvetica">{event.event}</td>
+                            <td className="py-3 px-6 font-coolvetica tracking-wide">
                               <Badge className={categoryColors[event.category] || "bg-gray-100 text-gray-800"}>
                                 {event.category}
                               </Badge>
@@ -133,8 +133,8 @@ export default function AcademicCalendarPage() {
           </div>
 
           <div className="mt-12 bg-slate-50 p-6 rounded-lg border border-slate-200">
-            <h3 className="text-xl font-semibold text-slate-800 mb-4">Important Notes</h3>
-            <ul className="space-y-2 text-slate-700">
+            <h3 className="text-xl font-semibold text-slate-800 mb-4 font-creato-bl">Important Notes</h3>
+            <ul className="space-y-2 text-slate-800 text-sm font-creato-thin tracking-wide">
               <li>• The academic calendar is subject to change based on university notifications.</li>
               <li>• Any changes to the calendar will be communicated through official channels.</li>
               <li>• Students are advised to regularly check the department notice board for updates.</li>
