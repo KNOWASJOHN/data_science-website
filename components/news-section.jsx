@@ -122,7 +122,7 @@ export function NewsSection() {
               <Card key={index} className="hover:shadow-xl transition-shadow duration-300 overflow-hidden">
                 <div className="aspect-video bg-gray-200 relative overflow-hidden">
                   <img
-                    src={item.image_url || "/placeholder.svg"}
+                    src={item.image_url || "https://png.pngtree.com/thumb_back/fw800/background/20231226/pngtree-futuristic-quantum-computer-technologies-a-design-of-technology-circuit-board-texture-image_13926456.png"}
                     alt={item.title}
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -140,7 +140,7 @@ export function NewsSection() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-md text-gray-600 mb-4 text-left font-eloquia-text tracking-tight">
+                  <p className="text-sm text-gray-600 mb-4 text-left font-eloquia-text tracking-tight line-clamp-4">
                     {item.description || "No description available."}
                   </p>
                   <Button
